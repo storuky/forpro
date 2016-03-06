@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+html ng-app="forpro"
+  head
+    meta charset="UTF-8"
+    title ForPro
+    = stylesheet_link_tag 'application'
+    link href='https://api.mapbox.com/mapbox.js/v2.3.0/mapbox.css' rel='stylesheet'
+    link href='https://fonts.googleapis.com/css?family=Roboto:400,300,500,700&subset=latin,cyrillic' rel='stylesheet' type='text/css'
+    base href="/"
+
+  body ng-controller="MainCtrl as ctrl"
+    header
+      a.logo
+        = image_tag "logos/#{current_company.name}.svg", width: 42, height: 35
+      .search
+        .search__input
+          i.search__input__icon.icon-magnifier
+          input type="text" placeholder="Поиск..."
+      
+
+      nav.nav
+        a.nav__link.nav__link--green ui-sref="new_position_path" + Создать
+        a.nav__link ui-sref="positions_path" Мои позиции
+        a.nav__link.nav__link__lang ui-sref="position_path({id: 1})"
+          span.nav__link__lang__title
+            | EN
+          i.nav__link__lang__arrow.caret
+
+    .map#map ng-class="{blur: Map.blur}"
+
+    .switcher.view-switcher
+      .switcher__item.active
+        | Карта
+      .switcher__item
+        | Список
+    
+    ui-view
+      div ng-non-bindable=""
+        = yield
+    script src='https://api.mapbox.com/mapbox.js/v2.3.0/mapbox.js'
+    = javascript_include_tag 'application'

@@ -1,0 +1,86 @@
+a.icon-close.page__close ui-sref="root_path"
+
+div
+  h2.page__title Контактные данные
+
+.page-layout
+  .contact-wrapper
+    .upload-logo
+      i.icon-plus.upload-logo__icon
+      .upload-logo__description Логотип / Фото
+
+    .contact-info
+      .row
+        .col-2
+          label.label.require Имя / Компания / ИП
+          input.form-control type="text"
+        .col-2
+          label.label Эл. почта
+          input.form-control type="email"
+      .row
+        .col-2
+          label.label.require Телефон
+          input.form-control type="text"
+        .col-2
+          label.label Веб-сайт
+          input.form-control type="text"
+div
+  h2.page__title Новая позиция
+
+.page-layout
+  .row
+    .col-2
+      .row
+        .col-2
+          label.label.require Тип позиции
+          .switcher
+            .switcher__item.active
+              | Закупка
+            .switcher__item
+              | Продажа
+        .col-2
+          label.label.require Товар
+          .select.form-control
+            .select__selected Выберите товар
+            .caret
+
+      .row
+        label.label.require Название позиции
+        input.form-control type="text"
+      .row
+        .col-2
+          label.label.require Вес (объем)
+          input.form-control type="text"
+        .col-2
+          label.label Мин. заказ
+          input.form-control type="text"
+      .row
+        .col-2
+          label.label.require Цена
+          input.form-control type="text"
+        .col-2
+          label.label Допуск
+          input.form-control type="text"
+    .col-2
+      .row
+        label.label.require Местоположение
+        .location
+      .row
+        label.label.require Адрес
+        input.form-control type="text"
+  .row style="margin-top: -20px;"
+    label.label Описание позиции
+    textarea.form-control rows="6"
+
+  .row
+    .upload-files
+      | Кликните или перетащите файлы в эту область
+
+.page-footer
+  .col-2
+    .page-footer__text
+      | Объявление будет удалено
+      | &nbsp;
+      strong 12.02.2015 в 20:35
+  .col-2.align-right
+    a.btn.btn-primary Создать

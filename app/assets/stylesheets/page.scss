@@ -1,0 +1,138 @@
+/* line 1, /Users/pavelkononenko/devel/forpro/app/assets/stylesheets/page.scss */
+/* line 3, /Users/pavelkononenko/devel/forpro/app/assets/stylesheets/page.scss */
+/* line 4, /Users/pavelkononenko/devel/forpro/app/assets/stylesheets/page.scss */
+/* line 5, /Users/pavelkononenko/devel/forpro/app/assets/stylesheets/page.scss */
+/* line 6, /Users/pavelkononenko/devel/forpro/app/assets/stylesheets/page.scss */
+/* line 7, /Users/pavelkononenko/devel/forpro/app/assets/stylesheets/page.scss */
+/* line 8, /Users/pavelkononenko/devel/forpro/app/assets/stylesheets/page.scss */
+/* line 9, /Users/pavelkononenko/devel/forpro/app/assets/stylesheets/page.scss */
+/* line 10, /Users/pavelkononenko/devel/forpro/app/assets/stylesheets/page.scss */
+/* line 11, /Users/pavelkononenko/devel/forpro/app/assets/stylesheets/page.scss */
+/* line 12, /Users/pavelkononenko/devel/forpro/app/assets/stylesheets/page.scss */
+.page {
+  background: white;
+  width: 880px;
+  margin: 60px auto;
+  overflow: hidden;
+  position: relative;
+  z-index: 1001;
+  box-shadow: 0 0 7px rgba(0, 0, 0, 0.2);
+  min-height: 300px;
+}
+
+/* line 11, /Users/pavelkononenko/devel/forpro/app/assets/stylesheets/page.scss */
+/* line 14, /Users/pavelkononenko/devel/forpro/app/assets/stylesheets/page.scss */
+/* line 17, /Users/pavelkononenko/devel/forpro/app/assets/stylesheets/page.scss */
+/* line 19, /Users/pavelkononenko/devel/forpro/app/assets/stylesheets/page.scss */
+/* line 22, /Users/pavelkononenko/devel/forpro/app/assets/stylesheets/page.scss */
+/* line 25, /Users/pavelkononenko/devel/forpro/app/assets/stylesheets/page.scss */
+/* line 27, /Users/pavelkononenko/devel/forpro/app/assets/stylesheets/page.scss */
+/* line 27, /Users/pavelkononenko/devel/forpro/app/assets/stylesheets/page.scss */
+/* line 28, /Users/pavelkononenko/devel/forpro/app/assets/stylesheets/page.scss */
+/* line 31, /Users/pavelkononenko/devel/forpro/app/assets/stylesheets/page.scss */
+/* line 33, /Users/pavelkononenko/devel/forpro/app/assets/stylesheets/page.scss */
+.page__close {
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  font-size: 32px;
+  padding: 2px;
+  text-decoration: none;
+  color: #D4D4D4;
+  transition: .1s;
+}
+
+/* line 25, /Users/pavelkononenko/devel/forpro/app/assets/stylesheets/page.scss */
+/* line 29, /Users/pavelkononenko/devel/forpro/app/assets/stylesheets/page.scss */
+/* line 32, /Users/pavelkononenko/devel/forpro/app/assets/stylesheets/page.scss */
+/* line 36, /Users/pavelkononenko/devel/forpro/app/assets/stylesheets/page.scss */
+/* line 40, /Users/pavelkononenko/devel/forpro/app/assets/stylesheets/page.scss */
+/* line 43, /Users/pavelkononenko/devel/forpro/app/assets/stylesheets/page.scss */
+/* line 44, /Users/pavelkononenko/devel/forpro/app/assets/stylesheets/page.scss */
+/* line 46, /Users/pavelkononenko/devel/forpro/app/assets/stylesheets/page.scss */
+/* line 50, /Users/pavelkononenko/devel/forpro/app/assets/stylesheets/page.scss */
+/* line 53, /Users/pavelkononenko/devel/forpro/app/assets/stylesheets/page.scss */
+.page__close:hover {
+  color: rgba(51, 51, 51, 0.46);
+}
+
+/* line 29, /Users/pavelkononenko/devel/forpro/app/assets/stylesheets/page.scss */
+/* line 34, /Users/pavelkononenko/devel/forpro/app/assets/stylesheets/page.scss */
+/* line 38, /Users/pavelkononenko/devel/forpro/app/assets/stylesheets/page.scss */
+/* line 43, /Users/pavelkononenko/devel/forpro/app/assets/stylesheets/page.scss */
+/* line 48, /Users/pavelkononenko/devel/forpro/app/assets/stylesheets/page.scss */
+/* line 52, /Users/pavelkononenko/devel/forpro/app/assets/stylesheets/page.scss */
+/* line 54, /Users/pavelkononenko/devel/forpro/app/assets/stylesheets/page.scss */
+/* line 57, /Users/pavelkononenko/devel/forpro/app/assets/stylesheets/page.scss */
+/* line 62, /Users/pavelkononenko/devel/forpro/app/assets/stylesheets/page.scss */
+/* line 66, /Users/pavelkononenko/devel/forpro/app/assets/stylesheets/page.scss */
+.page__title {
+  font-size: 20px;
+  color: #626262;
+  padding: 7px 0 7px 25px;
+  margin: 20px 0 25px 0;
+  border-bottom: 2px solid #8BC34A;
+  font-weight: 500;
+  display: inline-block;
+  line-height: 14px;
+}
+
+/* line 65, /Users/pavelkononenko/devel/forpro/app/assets/stylesheets/page.scss */
+/* line 69, /Users/pavelkononenko/devel/forpro/app/assets/stylesheets/page.scss */
+/* line 75, /Users/pavelkononenko/devel/forpro/app/assets/stylesheets/page.scss */
+/* line 80, /Users/pavelkononenko/devel/forpro/app/assets/stylesheets/page.scss */
+.page-layout {
+  padding: 25px;
+}
+
+/* line 69, /Users/pavelkononenko/devel/forpro/app/assets/stylesheets/page.scss */
+/* line 74, /Users/pavelkononenko/devel/forpro/app/assets/stylesheets/page.scss */
+/* line 81, /Users/pavelkononenko/devel/forpro/app/assets/stylesheets/page.scss */
+/* line 87, /Users/pavelkononenko/devel/forpro/app/assets/stylesheets/page.scss */
+.page-footer {
+  background: rgba(247, 247, 247, 0.58);
+  height: 70px;
+  padding: 18px 25px;
+}
+
+/* line 75, /Users/pavelkononenko/devel/forpro/app/assets/stylesheets/page.scss */
+/* line 81, /Users/pavelkononenko/devel/forpro/app/assets/stylesheets/page.scss */
+/* line 89, /Users/pavelkononenko/devel/forpro/app/assets/stylesheets/page.scss */
+/* line 96, /Users/pavelkononenko/devel/forpro/app/assets/stylesheets/page.scss */
+.overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(255, 255, 255, 0.49);
+  z-index: 1002;
+  overflow-y: auto;
+}
+
+/* line 100, /Users/pavelkononenko/devel/forpro/app/assets/stylesheets/page.scss */
+/* line 108, /Users/pavelkononenko/devel/forpro/app/assets/stylesheets/page.scss */
+.page-footer__text {
+  padding: 10px 0;
+  font-size: 14px;
+  color: #8C8C8C;
+}
+
+/* line 106, /Users/pavelkononenko/devel/forpro/app/assets/stylesheets/page.scss */
+/* line 115, /Users/pavelkononenko/devel/forpro/app/assets/stylesheets/page.scss */
+.page-footer__text strong {
+  font-weight: 500;
+  border-bottom: 1px dotted;
+  cursor: help;
+}
+
+/* line 112, /Users/pavelkononenko/devel/forpro/app/assets/stylesheets/page.scss */
+/* line 122, /Users/pavelkononenko/devel/forpro/app/assets/stylesheets/page.scss */
+.page_subtitle {
+  margin: 0 0 15px 0;
+  padding-bottom: 5px;
+  font-size: 16px;
+  color: #626262;
+  font-weight: normal;
+  border-bottom: 1px solid #EAEAEA;
+}

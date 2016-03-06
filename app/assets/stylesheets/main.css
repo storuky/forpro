@@ -1,0 +1,307 @@
+header {
+  height: 55px;
+  background: white;
+  box-shadow: 0px 3px 3px rgba(0, 0, 0, 0.08);
+  position: absolute;
+  z-index: 1002;
+  left: 0;
+  right: 0;
+}
+
+header {}
+
+.map {
+  position: absolute;
+  top: 55px;
+  bottom: 0;
+  width: 100%;
+}
+
+.logo {display: block;float: left;}
+
+.logo img {
+  margin: 10px 20px;
+  display: block;
+}
+
+.lang {
+  position: absolute;
+  right: 15px;
+  top: 19px;
+  cursor: pointer;
+}
+.lang__selected {
+
+}
+
+.search {
+  position: absolute;
+  left: 72px;
+  right: 250px;
+  height: 55px;
+}
+
+.search__input {
+  position: absolute;
+  left: 50px;
+  right: 0;
+}
+
+.search__input__icon {
+  position: absolute;
+  font-size: 16px;
+  margin: 17px;
+  color: #777777;
+  left: -41px;
+  top: 3px;
+}
+
+.search__input input[type="text"] {
+  height: 55px;
+  width: 100%;
+  font-size: 14px;
+  border: none;
+}
+
+.nav {position: absolute;right: 0;width: 250px;}
+
+.nav__link {
+  color: #59595A;
+  font-size: 14px;
+  text-decoration: none !important;
+  display: inline-block;
+  margin: 20px 10px;
+}
+
+.nav__link:hover {
+  color: #7F7F80;
+}
+
+.nav__link--green {
+  color: #428C46;
+}
+
+.nav__link--green:hover {
+  color: #4DB453;
+}
+
+.nav__link__lang__arrow {
+  position: absolute;
+  display: inline-block;
+  margin-left: 5px;
+  font-size: 11px;
+  margin-top: 6px;
+}
+
+.location {
+  height: 190px;
+  background: #F5F5F5;
+}
+
+.contact-wrapper {
+  position: relative;
+  height: 140px;
+}
+
+.upload-logo {
+  width: 140px;
+  height: 100%;
+  background: #F5F5F5;
+  position: absolute;
+  left: 0;
+  top: 0;
+  cursor: pointer;
+  border: 1px dashed #D0D0D0;
+}
+.upload-logo:hover {
+  background: rgba(245, 245, 245, 0.66);
+}
+
+.upload-logo__description {
+  text-align: center;
+  font-size: 12px;
+  margin-top: 90px;
+  color: #888888;
+}
+.upload-logo__icon {
+  padding: 2px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  font-size: 32px;
+  margin: -24px -16px;
+  color: #A4A4A4;
+}
+
+.contact-info {
+  position: absolute;
+  left: 160px;
+  right: 0;
+  top: 0;
+  height: 100%;
+}
+
+.upload-files {
+  height: 140px;
+  background: #F5F5F5;
+  text-align: center;
+  color: #59595A;
+  font-size: 20px;
+  padding: 55px 0;
+  cursor: pointer;
+  border: 1px dashed #D0D0D0;
+}
+
+.upload-files:hover {
+  background: rgba(245, 245, 245, 0.66);
+}
+
+
+.switcher {
+  display: block;
+  width: 100%;
+  overflow: visible;
+  border: 1px solid #E4E4E4;
+  height: 34px;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.switcher__item {
+  display: block;
+  width: 50%;
+  float: left;
+  height: 100%;
+  color: #59595A;
+  font-weight: normal;
+  font-size: 13px;
+  position: relative;
+  padding: 8px;
+  text-align: center;
+  background: white;
+}
+
+.switcher__item.active {
+  font-weight: 500;
+  background: #F9F9F9;
+}
+.switcher__item.active:before {
+  content: "";
+  position: absolute;
+  height: 2px;
+  bottom: -1px;
+  left: 0;
+  right: 0;
+  background: #8BC34A;
+}
+
+.switcher .switcher__item:not(:last-child) {
+  border-right: 1px solid #E4E4E4;
+}
+
+.blur {
+  -webkit-filter: blur(3px);
+}
+
+.view-switcher {
+  position: absolute;
+  bottom: 40px;
+  right: 40px;
+  z-index: 1001;
+  width: 150px;
+}
+
+.positions-table {
+  margin-bottom: 25px;
+}
+
+.images {
+  height: 230px;
+  background: #ECECEC;
+  position: relative;
+}
+.images__arrows {
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+.images__arrow {
+  width: 50px;
+  height: 50px;
+  background: rgba(139, 195, 74, .62);
+  color: white;
+  padding: 17px;
+  float: left;
+  cursor: pointer;
+}
+
+.images__arrow:hover {
+  background: rgba(139, 195, 74, .9);
+}
+
+.position-page__left {
+  width: 250px;
+  float: left;
+}
+
+.position-page__right {
+  margin-left: 290px;
+}
+
+.position-page__params {
+}
+.position-page__about {
+
+}
+.position-page__contacts {
+  margin-top: 25px;
+}
+
+.list {
+  width: 100%;
+}
+
+.list-row {
+  overflow: visible;
+  clear: both;
+  margin-top: 5px;
+}
+
+.list-row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.list-title {
+  float: left;
+  color: #626262;
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.list-description {
+  float: right;
+  color: #626262;
+  font-size: 14px;
+}
+
+.position-page__contacts__info .list {
+  width: 250px
+}
+
+.position-page__contacts__info {
+  float: left;
+  margin-left: 20px;
+}
+
+.position-page__avatar {
+  width: 100px;
+  height: 100px;
+  background: #ECECEC;
+  float: left;
+}
+
+.position-page__contacts__name {
+  margin: 2px 0 10px 0;
+}
