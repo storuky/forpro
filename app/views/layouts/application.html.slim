@@ -2,7 +2,7 @@
 html ng-app="forpro"
   head
     meta charset="UTF-8"
-    title ForPro
+    title = I18n.t "company.#{current_company.name}"
     = stylesheet_link_tag 'application'
     = stylesheet_link_tag current_company.name
     = render "layouts/favicons"

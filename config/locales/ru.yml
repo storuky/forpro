@@ -40,3 +40,8 @@ ru:
     new_position: "+ Создать позицию"
     my_positions: "Мои позиции"
     search: Поиск...
+  
+  company:
+    agrofor: Агрофор
+    woodfor: Вудфор
+    fuelfor: Фьюлфор

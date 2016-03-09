@@ -39,3 +39,8 @@ en:
     new_position: "+ New position"
     my_positions: "My positions"
     search: Search...
+  
+  company:
+    agrofor: Agrofor
+    woodfor: Woodfor
+    fuelfor: Fuelfor
