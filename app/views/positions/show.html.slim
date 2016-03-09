@@ -4,11 +4,11 @@
     a.icon-pencil.page__edit.ng-hide ng-show="gon.current_user.position_ids.indexOf(ctrl.position.id)!=-1" ui-sref="edit_position_path({id: ctrl.position.id})"
     
     div
-      h2.page__title ng-class="'border-'+ctrl.position.color" = @position.title
+      h2.page__title = @position.title
 
     .page-layout
       .row
-        h3.page_subtitle Местопложение
+        h3.page_subtitle = Position.human_attribute_name("location")
         .position-address
           i.icon-marker ng-class="'color-'+ctrl.position.color"
           span = @position.address

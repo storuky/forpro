@@ -50,7 +50,6 @@ class DocumentUploader < CarrierWave::Uploader::Base
   # end
   def filename
     model.filename = (original_filename || model.filename)
-    ap model.filename
     "#{secure_token}.#{file.extension}" if original_filename.present?
   end
 
