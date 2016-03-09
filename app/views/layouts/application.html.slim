@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 html ng-app="forpro"
   head
+    title = I18n.t "company.#{current_company.name}.title"
     meta charset="UTF-8"
-    title = I18n.t "company.#{current_company.name}"
+    meta content="#{t "company.#{current_company.name}.description"}" name="description"
     = stylesheet_link_tag 'application'
     = stylesheet_link_tag current_company.name
     = render "layouts/favicons"
