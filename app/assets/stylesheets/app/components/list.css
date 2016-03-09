@@ -1,0 +1,28 @@
+.list {
+  width: 100%;
+}
+
+.list-row {
+  overflow: visible;
+  clear: both;
+  margin-top: 5px;
+}
+
+.list-row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.list-title {
+  float: left;
+  color: #626262;
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.list-description {
+  float: right;
+  color: #626262;
+  font-size: 14px;
+}

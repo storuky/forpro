@@ -1,0 +1,218 @@
+.marker-label {
+  z-index: 99;
+  position: absolute;
+  min-width: 70px;
+  transition: .3s;
+  color: black;
+  cursor: pointer;
+  margin-top: -30px;
+  margin-left: -8px;
+}
+  
+.marker-label.cluster {
+  margin-top: -14px;
+  margin-left: 0;
+}
+
+.marker-label:after {
+  transition: all .3s ease .3s;
+  transform: rotate(0deg);
+  content: "";
+  display: block;
+  position: absolute;
+  width: 0;
+  height: 0;
+  bottom: -37px;
+  border-style: solid;
+  border-width: 0 14px 12px 0;
+}
+
+.marker-label__head {
+  height: 15px;
+  white-space: nowrap;
+  color: white;
+  font-size: 10px;
+  padding: 0 5px;
+  line-height: 14px;
+  position: absolute;
+  max-width: 115px;
+  overflow: hidden;
+  z-index: 1;
+  top: -15px;
+  min-width: 80px;
+}
+  
+.marker-label__body {
+  text-transform: capitalize;
+  height: 25px;
+  width: auto;
+  display: inline-block;
+  overflow: hidden;
+  position: absolute;
+  min-width: 70px;
+  white-space: nowrap;
+  color: white;
+  padding: 5px;
+  line-height: 14px;
+  margin: 0;
+  max-width: 115px;
+  transition: margin .3s ease .3s, height .3s, background .3s;
+  font-size: 14px;
+}
+  
+.marker-label__head:before, .marker-label__body:before {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 5px;
+  height: 25px;
+  transition: .3s;
+}
+.marker-label:hover > .marker-label__body, .marker-label:hover > .marker-label__head {
+  max-width: none;
+}
+
+.leaflet-div-icon {
+  background: none !important;
+  border: none !important;
+}
+
+.markers-choose {
+  width: 140px;
+  height: 140px;
+  display: inline-block;
+  vertical-align: top;
+  padding: 75px 0 0 0;
+  border: 1px solid #EBEBEB;
+  margin: 0 20px 20px 0;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.markers-choose:before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background: asset-url("mini_map.png");
+  background-size: 100%;
+  -webkit-filter: blur(2px);
+}
+
+
+
+.markers-choose .marker-label {
+  top: 60px;
+  left: 50%;
+  margin-left: -57px;
+}
+
+.markers-choose.active .markers-choose__description, .markers-choose:hover .markers-choose__description {
+  height: 55px;
+  padding: 10px;
+}
+
+.markers-choose__description {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 35px;
+  text-align: center;
+  color: #636363;
+  font-size: 18px;
+  background: #FAFAFA;
+  padding: 7px;
+  transition: .3s;
+}
+
+.markers-choose:hover .markers-choose__price,
+.markers-choose.active .markers-choose__price {
+  margin-top: 3px;
+}
+
+.markers-choose__price {
+  font-size: 12px;
+  margin-top: 5px;
+}
+
+$colors: (("green", #428C45), ("blue", #0d89ec), ("red", #F44336), ("grey", #607D8B), ("brown", #795548), ("orange", #FF9800), ("purple", #673AB7), ("teal", #009688));
+@each $name, $color in $colors {
+
+  .color-#{$name} {
+    color: $color !important;
+  }
+  
+  .border-#{$name} {
+    border-color: $color !important;
+  }
+
+  .markers-choose--#{$name}.active {
+    border: 3px solid $color;
+  }
+
+  .markers-choose--#{$name}.active {
+    border: 3px solid $color;
+  }
+
+  .marker-label.marker-label--#{$name} {
+    &:after {
+      border-color: transparent $color transparent transparent;
+    }
+
+    .marker-label__head {
+      background: $color;
+    }
+
+      
+    .marker-label__head:before {
+      background: $color;
+    }
+      
+    .marker-label__body:before {
+      background: lighten($color, 8%);
+    }
+      
+    &:hover > .marker-label__body,
+    &:hover > .marker-label__body:before {
+      background: lighten($color, 12%);
+    }
+
+    .marker-label__body {
+      background: lighten($color, 8%);
+    }
+  }
+}
+
+// .marker-label.marker-label--blue {
+//   &:after {
+//     border-color: transparent #0d89ec transparent transparent;
+//   }
+
+//   .marker-label__head {
+//     background: #0d89ec;
+//   }
+
+    
+//   .marker-label__head:before {
+//     background: #0d89ec;
+//   }
+    
+//   .marker-label__body:before {
+//     background: #2196F3;
+//   }
+    
+//   &:hover > .marker-label__body,
+//   &:hover > .marker-label__body:before {
+//     background: #2c9bf4;
+//   }
+
+//   .marker-label__body {
+//     background: #2196F3;
+//   }
+// }

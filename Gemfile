@@ -62,3 +62,5 @@ gem 'sidekiq'
 gem 'devise-async'
 gem 'sinatra', :require => nil
 gem 'premailer-rails'
+gem 'file_validators'
+gem "validate_url"

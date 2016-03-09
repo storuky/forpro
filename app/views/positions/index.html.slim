@@ -2,42 +2,44 @@
   .page
     a.icon-close.page__close ui-sref="root_path"
     h2.page__title Мои позиции
-
-    table.table.positions-table
+    .page-layout.ng-hide ng-hide="ctrl.positions.length"
+      .no-positions
+        p У вас нет ни одной позиции
+        a.btn.btn-primary href="/positions/new" Нажмите, чтобы создать
+    table.table.positions-table.ng-hide ng-show="ctrl.positions.length"
       thead
         tr
           th
-          th.w0 До удаления
-          th.w0 Тип позиции
-          th Товар
-          th Цена
-          th Вес
-          th.w0 Мин. заказ
+          th.w0 = Position.human_attribute_name("expire_date")
+          th.w0 = Position.human_attribute_name("type")
+          th = Position.human_attribute_name("product")
+          th = Position.human_attribute_name("price")
+          th.w0 = Position.human_attribute_name("weight")
+          th.w0 = Position.human_attribute_name("min_weight")
           th
       tbody
-        tr ng-repeat="position in [1,2,3,4,5,6,7]"
+        tr.ng-cloak ng-repeat="position in ctrl.positions"
           td.align-right.first-td
-            i.icon-reload.table-icon
-          td.w0
-            | 1 час 25 минут
-          td.w0
-            | Продажа
-          td
-            | Доски
-          td
-            | 5 800,00
+            a.table-icon.tooltip title="Обновить" ng-click="ctrl.touch(position)"
+              i.icon-reload
+          td.w0 ng-click="Position.goTo(position)"
+            | {{position.updated_at | expireDate}}
+          td.w0 ng-click="Position.goTo(position)"
+            | {{position.trade_type_title}}
+          td ng-click="Position.goTo(position)"
+            | {{position.product.title}}
+          td ng-click="Position.goTo(position)"
+            | {{position.price | currency}}
             .dim
-              | ₽/м³
-          td.w0
-            | 100
+              | {{position.currency.title}}/{{position.price_weight_dimension.title}}
+          td.w0 ng-click="Position.goTo(position)"
+            | {{position.weight}}
             .dim
-              | м³
-          td.w0
-            | 10
+              | {{position.weight_dimension.title}}
+          td.w0 ng-click="Position.goTo(position)"
+            | {{position.min_weight}}
             .dim
-              | м³
+              | {{position.min_weight_dimension.title}}
           td.w0.table-actions
-            a ui-sref="position_path({id: 1})"
-              i.icon-eye.table-icon
-            a ui-sref="edit_position_path({id: 1})"
+            a.btn-icon ui-sref="edit_position_path(position)"
               i.icon-pencil.table-icon

@@ -1,78 +1,101 @@
 .overlay
   .page
     a.icon-close.page__close ui-sref="root_path"
+    a.icon-pencil.page__edit.ng-hide ng-show="gon.current_user.position_ids.indexOf(ctrl.position.id)!=-1" ui-sref="edit_position_path({id: ctrl.position.id})"
     
     div
-      h2.page__title Закупка пшеницы оптом
+      h2.page__title ng-class="'border-'+ctrl.position.color" = @position.title
 
-
-    .images
-      .images__arrows
-        .images__arrow.icon-arrow-left
-        .images__arrow.icon-arrow-right
     .page-layout
+      .row
+        h3.page_subtitle Местопложение
+        .position-address
+          i.icon-marker ng-class="'color-'+ctrl.position.color"
+          span = @position.address
+        .location#location position="ctrl.position" lat="ctrl.position.lat" lng="ctrl.position.lng" disable-zoom="true"
       .row
         .position-page__left
           .position-page__params
-            h3.page_subtitle Условия сделки
+            h3.page_subtitle = I18n.t("position.terms_of_deal")
             .list
               .list-row
                 .list-title
-                  | Тип:
-                .list-description
-                  | Закупка
+                  | #{Position.human_attribute_name("type")}:
+                .list-description = I18n.t("trade_type.#{@position.trade_type}")
               .list-row
                 .list-title
-                  | Товар:
-                .list-description
-                  | Пшеница
+                  | #{Position.human_attribute_name("product")}:
+                .list-description = I18n.t("product.#{@position.product.title}")
               .list-row
                 .list-title
-                  | Вес:
+                  | #{Position.human_attribute_name("weight")}:
                 .list-description
-                  | 500 т
+                  | #{@position.weight} #{@position.weight_dimension.title}
               .list-row
                 .list-title
-                  | Цена:
+                  | #{Position.human_attribute_name("price")}:
                 .list-description
-                  | 8000 руб/т
-              .list-row
-                .list-title
-                  | Мин. заказ:
-                .list-description
-                  | 1 т
+                  | #{@position.price} #{@position.currency.title}/#{@position.price_weight_dimension.title}
+
+              - if @position.min_weight > 0
+                .list-row
+                  .list-title
+                    | #{Position.human_attribute_name("min_weight")}:
+                  .list-description
+                    | #{@position.min_weight} #{@position.min_weight_dimension.title}
         .position-page__right
-          .position-page__about
-            h3.page_subtitle Описание позиции
+          .position-page__contacts.row
+            h3.page_subtitle = I18n.t("position.contacts")
 
-      .position-page__contacts.row
-        h3.page_subtitle Контактная информация
+            .position-page__avatar
+              - if @position.logo
+                = image_tag @position.logo.body.thumb, size: "100x100"
+            .position-page__contacts__info
+              .position-page__contacts__name = @position.name
+              .list
+                .list-row
+                  .list-title
+                    | #{Position.human_attribute_name("phone")}:
+                  .list-description = @position.phone
+                .list-row
+                  .list-title
+                    | #{Position.human_attribute_name("email")}:
+                  .list-description
+                    a.link href="mailto:#{@position.email}" = @position.email
+                - if @position.website.present?
+                  .list-row
+                    .list-title
+                      | #{Position.human_attribute_name("website")}:
+                    .list-description
+                      a.link href="#{@position.website}" = @position.website
 
-        .position-page__avatar
-        .position-page__contacts__info
-          .position-page__contacts__name
-            | Кононенко Павел Вячеславович
-          .list
-            .list-row
-              .list-title
-                | Телефон:
-              .list-description
-                | +7 (988) 999 6543
-            .list-row
-              .list-title
-                | Эл. почта:
-              .list-description
-                a.link href="" storuky@gmail.com
-            .list-row
-              .list-title
-                | Веб-сайт:
-              .list-description
-                a.link href="" https://agrofor.pro
+        .position-page__about
+          h3.page_subtitle = Position.human_attribute_name("description")
+          pre
+            = @position.description || I18n.t("position.no_desctiption")
+
+      - if @position.images.any?
+        br
+        .row
+          h3.page_subtitle = Position.human_attribute_name("images")
+          .images
+            .images__arrows
+              .images__arrow.icon-arrow-left
+              .images__arrow.icon-arrow-right
+            .images__list
+              - @position.images.each do |image|
+                = link_to image.body.url, target: "_blank" do
+                  = image_tag image.body.thumb, size: "150x150"
+      
+      - if @position.documents.any?
+        .row
+          h3.page_subtitle = Position.human_attribute_name("documents")
+          div documents="ctrl.position.documents"
     .page-footer
       .col-2
         .page-footer__text
-          | Объявление будет удалено
+          = Position.human_attribute_name("expire_date")
           | &nbsp;
-          strong 12.02.2015 в 20:35
+          strong ng-bind="ctrl.position.updated_at | expireDate"
       .col-2.align-right
-        a.btn.btn-primary Поднять
+        a.btn.btn-primary ng-click="ctrl.touch(ctrl.position)" Поднять

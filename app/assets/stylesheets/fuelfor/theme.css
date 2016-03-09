@@ -1,0 +1,23 @@
+.nav__link--primary {
+  color: #2196F3;
+}
+
+.nav__link--primary:hover {
+  color: #0080E6;
+}
+
+.btn-primary {
+  color: #fff;
+  background-color: #2196F3;
+}
+.btn-primary:hover {
+  background: #0080E6;
+}
+
+.page__title {
+  border-color: #2196F3;
+}
+
+.switcher__item.active:before {
+  background: #2196F3;
+}

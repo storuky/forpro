@@ -3,15 +3,20 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
-  before_action :set_company
+  before_action :set_locale
+  before_action :set_current_company
+  before_action :set_current_user
+  before_action :set_form_builder
   after_action :set_csrf_cookie
   
   helper_method :current_company
+  helper_method :current_user
   
   layout proc {
     if request.xhr?
       false
     else
+      set_gon
       'application'
     end
   }
@@ -36,8 +41,20 @@ class ApplicationController < ActionController::Base
       end
     end
 
+    def dump res, options = {}
+      if options[:serializer]
+        Oj.dump serialize(res, options).as_json
+      else
+        Oj.dump res
+      end
+    end
+
     def current_company
       Company.current_company
+    end
+
+    def current_user
+      User.current_user
     end
 
   private
@@ -45,9 +62,55 @@ class ApplicationController < ActionController::Base
       response.headers['X-CSRF-Token'] = form_authenticity_token if protect_against_forgery?
     end
 
-    def set_company
+    def set_current_company
       Company.current_company = OpenStruct.new Rails.application.secrets[:companies][request.host]
       ActionMailer::Base.default_url_options[:host] = "https://#{Company.current_company.name}.pro"
     end
 
+    def set_current_user
+      if session[:user_id]
+        User.current_user = User.find_by(id: session[:user_id])
+      end
+    end
+
+    def set_locale
+      if current_user
+        I18n.locale = current_user.locale
+      else
+        I18n.locale = session[:locale]
+      end
+
+      I18n.locale ||= extract_locale
+    end
+
+    def set_gon
+      gon.data = {
+        weight_dimensions: WeightDimension.all_from_cache(serializer: WeightDimensionSerializer),
+        currencies: Currency.all_from_cache(serializer: CurrencySerializer),
+        products: Product.all_from_cache(serializer: ProductSerializer),
+        categories: Category.all_from_cache(serializer: CategorySerializer),
+        trade_type: I18n.t("trade_type"),
+        markers: I18n.t("markers.#{current_company.name}")
+      }
+
+      gon.current_user = {
+        position_ids: (current_user.position_ids rescue [])
+      }
+
+      gon.translations = {
+        position: I18n.t("activerecord.attributes.position")
+      }
+    end
+
+    def set_form_builder
+      ActionView::Base.default_form_builder = ForProFormBuilder
+    end
+
+    def extract_locale
+      if request.env['HTTP_ACCEPT_LANGUAGE']
+        request.env['HTTP_ACCEPT_LANGUAGE'].scan(/^[a-z]{2}/).first
+      else
+        :en
+      end
+    end
 end

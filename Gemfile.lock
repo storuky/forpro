@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/storuky/oxymoron.git
-  revision: 95bed5753eec1d89203ae9710f24674820074f9a
+  revision: 698f4184744badc1ec7024372b8d0e3d18430890
   branch: master
   specs:
     oxymoron (0.0.2)
@@ -120,6 +120,9 @@ GEM
       railties (>= 3.0.0)
     faker (1.6.3)
       i18n (~> 0.5)
+    file_validators (2.0.2)
+      activemodel (>= 3.0)
+      mime-types (>= 1.0)
     globalid (0.3.6)
       activesupport (>= 4.1.0)
     gon (6.0.1)
@@ -286,6 +289,9 @@ GEM
       execjs (>= 0.3.0)
       json (>= 1.8.0)
     uniform_notifier (1.9.0)
+    validate_url (1.0.2)
+      activemodel (>= 3.0.0)
+      addressable
     warden (1.2.6)
       rack (>= 1.0)
     whenever (0.9.4)
@@ -311,6 +317,7 @@ DEPENDENCIES
   devise-async
   factory_girl_rails
   faker
+  file_validators
   gon
   google_currency
   mini_magick
@@ -340,6 +347,7 @@ DEPENDENCIES
   thin
   thinking-sphinx (~> 3.1.0)
   uglifier (>= 1.3.0)
+  validate_url
   whenever
 
 BUNDLED WITH

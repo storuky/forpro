@@ -1,0 +1,42 @@
+ru:
+  activerecord:
+    attributes:
+      position:
+        type: Тип позиции
+        product: Товар
+        weight: Вес (объем)
+        min_weight: Мин. заказ
+        price: Цена
+        address: Адрес
+        name: Имя / Компания / ИП
+        email: Эл. почта 
+        phone: Телефон
+        website: Веб-сайт
+        title: Название позиции
+        deviation: Допуск
+        description: Описание позиции
+        files: Изображения и документы
+        images: Изображения
+        documents: Документы
+        location: Меслоположение
+        logo: Логотип / Фото
+        expire_date: Дата истечения
+    errors:
+      models:
+        position:
+          attributes:
+            website:
+              url: неверный адрес сайта
+  position:
+    terms_of_deal: Условия сделки
+    contacts: Контактная информация
+    no_desctiption: Нет описания
+    click_or_drag: Кликните или перетащите файлы в эту область
+    position_will_be_delete: Позиция будет удалена
+    create: Создать
+    update: Сохранить
+    additional: Дополнительно
+    select_product: Выберите товар
+    new_position: "+ Создать позицию"
+    my_positions: "Мои позиции"
+    search: Поиск...

@@ -13,6 +13,10 @@ a {
   cursor: pointer;
 }
 
+.ng-cloak {
+  display: none !important;
+}
+
 .btn {
   display: inline-block;
   padding: 6px 12px;
@@ -43,15 +47,7 @@ a {
   position: relative;
   z-index: 1;
   -webkit-backface-visibility: hidden;
-}
-
-.btn-primary {
-  color: #fff;
-  background-color: #6FC080;
-  border-color: #6FC080;
-}
-.btn-primary:hover {
-  background: #73CE86;
+  text-decoration: none !important;
 }
 
 ::-webkit-input-placeholder {font-weight: normal; font-size: 14px;}
@@ -78,6 +74,7 @@ a {
   padding: 6px 12px;
   display: block;
   line-height: 1.42857143;
+  font-size: 14px;
 }
 
 input[type="text"].form-control,
@@ -101,19 +98,6 @@ label.label {
   display: inline-block;
 }
 
-.select {
-  position: relative;
-  cursor: pointer;
-}
-.select .caret {
-  position: absolute;
-  right: 10px;
-  top: 14px;
-  border-top: 6px dashed;
-  border-right: 6px solid transparent;
-  border-left: 6px solid transparent;
-  color: #666;
-}
 
 .col-2 {
   width: 50%;
@@ -161,8 +145,8 @@ label.label {
   border-bottom: 1px solid #DCDCDC;
 }
 
-.table tr {
-  cursor: default;
+.table tbody tr {
+  cursor: pointer;
 }
 .table tbody tr:hover {
   background: rgba(247, 247, 247, 0.58);
@@ -174,7 +158,7 @@ label.label {
 }
 
 .table td {
-  font-size: 14px;
+  font-size: 13px;
   color: #3F3F3F;
   border-top: 1px solid #DCDCDC;
 }
@@ -202,9 +186,6 @@ label.label {
   text-decoration: none !important;
   color: #666666;
 }
-.table-actions i {
-  margin-left: 15px;
-}
 
 .w0 {
   width: 1px;
@@ -217,4 +198,77 @@ label.label {
 
 a.link {
   color: #2787EB;
+}
+
+.form-group {
+  position: relative;
+}
+
+.btn-icon {
+  background: #8BC34A;
+  color: white;
+  line-height: 24px;
+  border-radius: 3px;
+  height: 25px;
+  display: inline-block;
+  width: 25px;
+  text-align: center;
+  color: white !important;
+}
+
+.btn-icon:hover {
+  background: #A3DD5F;
+}
+
+.tooltip{
+  display: inline;
+  position: relative;
+}
+
+.tooltip:hover:after{
+  background: #333;
+  background: rgba(0,0,0,.8);
+  border-radius: 5px;
+  bottom: 26px;
+  color: #fff;
+  content: attr(title);
+  left: 20%;
+  padding: 5px 15px;
+  position: absolute;
+  z-index: 98;
+  text-align: left;
+  margin-left: -7px;
+  font-size: 13px;
+}
+
+.tooltip:hover:before{
+  border: solid;
+  border-color: #333 transparent;
+  border-width: 6px 6px 0 6px;
+  bottom: 20px;
+  content: "";
+  left: 50%;
+  position: absolute;
+  z-index: 99;
+  margin-left: -5px;
+}
+
+input[type="file"] {
+  display: none;
+}
+
+.rails-errors {
+  font-size: 12px;
+  color: #FF4A4A;
+  position: absolute;
+}
+
+.ng-invalid-server {
+  border-color: #FF4A4A !important;
+}
+
+pre {
+  font-family: "Roboto" !important;
+  font-size: inherit;
+  margin: 0;
 }

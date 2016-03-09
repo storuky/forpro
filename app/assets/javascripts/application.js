@@ -17,14 +17,17 @@
 //= require oxymoron/ng-notify
 //= require oxymoron/perfect-scrollbar
 //= require oxymoron/store
+//= require oxymoron/underscore
 //= require oxymoron
+//= require angular-scroll.min
 //= require_self
 //= require_tree .
 
-var app = angular.module("forpro", ["oxymoron", "ui.router", "ngTouch"])
+var app = angular.module("forpro", ["oxymoron", "ui.router", "ngTouch", "duScroll"])
 
-L.mapbox.accessToken = 'pk.eyJ1IjoiYWdyb2ZvciIsImEiOiJjaWxmOWJoeHMwMDNldzRsejFzaGZwd2poIn0.nXIc1EU4R5zdQvDvjd9RjQ';
+app.run(['$rootScope', 'Position', function ($rootScope, Position) {
+  $rootScope.gon = gon;
+  $rootScope.Routes = Routes;
 
-var map = L.mapbox.map('map', 'mapbox.streets', {zoomControl: false})
-    .setView([47.226039, 39.693642], 13);
-
+  window.Position = Position;
+}])

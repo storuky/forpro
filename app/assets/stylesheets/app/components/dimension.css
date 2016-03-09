@@ -1,0 +1,55 @@
+.dimensions {
+  position: absolute;
+  right: 10px;
+  top: 7px;
+}
+
+.dimension-separator {
+  font-size: 14px;
+  display: inline-block;
+  margin: -2px;
+}
+
+.dimensions .dimension {
+  position: relative;
+  right: 0;
+  top: 0;
+  display: inline-block;
+}
+
+.dimension {
+  position: absolute;
+  right: 10px;
+  top: 8px;
+  font-size: 14px;
+}
+
+.dimension:not(.disabled) .dimension__selected {
+  cursor: pointer;
+  border-bottom: 1px dotted;
+}
+
+.dimension.disabled .dimension__selected {
+  cursor: default;
+}
+
+.dimension:not(.disabled) .dimension__selected:hover {
+  color: #666;
+}
+
+.dimension__list {
+  position: absolute;
+  left: 0;
+  background: white;
+  box-shadow: 0 0 3px rgba(0,0,0,.2);
+  margin-top: 5px;
+  z-index: 2;
+}
+.dimension__item {
+  padding: 6px 12px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+.dimension:not(.disabled) .dimension__item:hover {
+  background: #F5F5F5;
+}

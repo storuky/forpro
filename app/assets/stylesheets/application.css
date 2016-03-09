@@ -12,7 +12,10 @@
  *
  *= require oxymoron/normalize
  *= require oxymoron/ng-notify
- *= require_tree .
+ *= require_tree ./app
  *= require_self
  */
 
+.ng-hide {
+  display: none !important;
+}

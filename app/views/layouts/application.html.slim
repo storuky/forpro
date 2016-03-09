@@ -4,8 +4,10 @@ html ng-app="forpro"
     meta charset="UTF-8"
     title ForPro
     = stylesheet_link_tag 'application'
+    = stylesheet_link_tag current_company.name
     link href='https://api.mapbox.com/mapbox.js/v2.3.0/mapbox.css' rel='stylesheet'
     link href='https://fonts.googleapis.com/css?family=Roboto:400,300,500,700&subset=latin,cyrillic' rel='stylesheet' type='text/css'
+    link href="https://api.mapbox.com/mapbox.js/plugins/leaflet-markercluster/v0.4.0/MarkerCluster.css" rel='stylesheet' type='text/css'
     base href="/"
 
   body ng-controller="MainCtrl as ctrl"
@@ -15,27 +17,36 @@ html ng-app="forpro"
       .search
         .search__input
           i.search__input__icon.icon-magnifier
-          input type="text" placeholder="Поиск..."
+          input type="text" placeholder="#{I18n.t("position.search")}" ng-model="Search.query" ng-model-options="{debounce: 300}"
       
 
       nav.nav
-        a.nav__link.nav__link--green ui-sref="new_position_path" + Создать
-        a.nav__link ui-sref="positions_path" Мои позиции
-        a.nav__link.nav__link__lang ui-sref="position_path({id: 1})"
+        a.nav__link.nav__link--primary href="/positions/new" = I18n.t("position.new_position")
+        a.nav__link href="/positions" = I18n.t("position.my_positions")
+        a.nav__link.nav__link__lang ng-click="showLocaleList = !showLocaleList; $event.stopPropagation()"
           span.nav__link__lang__title
-            | EN
-          i.nav__link__lang__arrow.caret
+            = I18n.locale.to_s.upcase
+          i.nav__lang__arrow.caret
+        .nav__lang-list.ng-hide ng-show="showLocaleList" click-outside="showLocaleList = false" click-outside-if="showLocaleList"
+          a ng-click="setLocale('ru')" RU
+          a ng-click="setLocale('en')" EN
 
     .map#map ng-class="{blur: Map.blur}"
 
-    .switcher.view-switcher
-      .switcher__item.active
-        | Карта
-      .switcher__item
-        | Список
+    .view-switcher
+      .map-locator locate=""
+        i.icon-locate
+      /.switcher ng-model="viewType"
+        .switcher__item.active value="map"
+          | Карта
+        .switcher__item value="list"
+          | Список
+
     
     ui-view
       div ng-non-bindable=""
         = yield
     script src='https://api.mapbox.com/mapbox.js/v2.3.0/mapbox.js'
+    script src="https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-markercluster/v0.4.0/leaflet.markercluster.js"
+    = Gon::Base.render_data({})
     = javascript_include_tag 'application'
