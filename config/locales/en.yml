@@ -39,6 +39,10 @@ en:
     new_position: "+ New position"
     my_positions: "My positions"
     search: Search...
+    chose_color: Сhoose the color of your position
+    click_for_create: Click for create
+    no_positions: No positions
+    my_positions: My positions
   
   company:
     agrofor:

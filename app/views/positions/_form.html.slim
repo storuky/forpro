@@ -2,7 +2,7 @@ a.icon-close.page__close ui-sref="root_path"
 
 = form_for Position.new do |f|
   div
-    h2.page__title ng-class="'border-'+ctrl.position.color" = I18n.t("position.contacts")
+    h2.page__title = I18n.t("position.contacts")
 
   .page-layout
     .contact-wrapper
@@ -29,7 +29,7 @@ a.icon-close.page__close ui-sref="root_path"
             label.label = Position.human_attribute_name("website")
             = f.text_field :website
   div
-    h2.page__title ng-class="'border-'+ctrl.position.color" = I18n.t("position.terms_of_deal")
+    h2.page__title = I18n.t("position.terms_of_deal")
 
   .page-layout
     .row
@@ -114,10 +114,10 @@ a.icon-close.page__close ui-sref="root_path"
         
         div documents="ctrl.position.documents" edit="true"
   div
-    h2.page__title ng-class="'border-'+ctrl.position.color" = I18n.t("position.additional")
+    h2.page__title = I18n.t("position.additional")
   .page-layout style="padding-top: 0"
     .row
-      p Выберите цвет, наиболее подходящий вашей позиции
+      p = I18n.t("position.chose_color")
       div
         markers ng-model="ctrl.position.color" position="ctrl.position"
 

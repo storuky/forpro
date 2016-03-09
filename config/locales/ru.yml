@@ -40,6 +40,10 @@ ru:
     new_position: "+ Создать позицию"
     my_positions: "Мои позиции"
     search: Поиск...
+    chose_color: "Выберите цвет, наиболее подходящий вашей позиции"
+    click_for_create: "Кликните, чтобы создать"
+    no_positions: У вас нет ни одной позиции
+    my_positions: Мои позиции
   
   company:
     agrofor:

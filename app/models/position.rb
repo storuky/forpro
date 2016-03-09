@@ -39,7 +39,7 @@ class Position < ActiveRecord::Base
   validates :website, :url => {:allow_blank => true}
   validate :less_then_weight
 
-  validates :color, inclusion: { in: %w(green blue red grey brown orange purple teal) }
+  validates :color, inclusion: { in: %w(green blue red grey brown orange) }
   validates :trade_type, inclusion: { in: ["buy", "sell"] }
   validates :product_id, inclusion: { in: Position.products_ids }
   validates :weight_dimension_id, inclusion: { in: Position.dimensions_ids }

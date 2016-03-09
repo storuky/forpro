@@ -1,11 +1,11 @@
 .overlay
   .page
     a.icon-close.page__close ui-sref="root_path"
-    h2.page__title Мои позиции
+    h2.page__title = I18n.t("position.my_positions")
     .page-layout.ng-hide ng-show="ctrl.positions.length == 0"
       .no-positions
-        p У вас нет ни одной позиции
-        a.btn.btn-primary href="/positions/new" Нажмите, чтобы создать
+        p = I18n.t("position.no_positions")
+        a.btn.btn-primary href="/positions/new" = I18n.t("position.click_for_create")
     table.table.positions-table.ng-hide ng-hide="ctrl.positions.length == 0"
       thead
         tr

@@ -15,9 +15,9 @@
 }
 
 .page__title {
-  border-color: #ED992D;
+  border-color: #ffdb4c;
 }
 
 .switcher__item.active:before {
-  background: #ED992D;
+  background: #ffdb4c;
 }
