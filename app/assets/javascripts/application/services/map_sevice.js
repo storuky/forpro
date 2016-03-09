@@ -53,7 +53,8 @@ app.service('Map', ['$rootScope', '$filter', function ($rootScope, $filter) {
     })
 
     map.addLayer(Map.cluster);
-    map.fitBounds(Map.cluster.getBounds());
+    if (positions.length)
+      map.fitBounds(Map.cluster.getBounds());
   }
 
   Map.addMarker = function (position) {
