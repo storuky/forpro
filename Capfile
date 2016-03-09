@@ -1,10 +1,8 @@
-# Load DSL and set up stages
-require 'capistrano/setup'
+# Load DSL and Setup Up Stages
 
-# Include default deployment tasks
-require 'capistrano/deploy'
+# Includes default deployment tasks
 
-# Include tasks from other gems included in your Gemfile
+# Includes tasks from other gems included in your Gemfile
 #
 # For documentation on these, see for example:
 #
@@ -13,15 +11,19 @@ require 'capistrano/deploy'
 #   https://github.com/capistrano/chruby
 #   https://github.com/capistrano/bundler
 #   https://github.com/capistrano/rails
-#   https://github.com/capistrano/passenger
-#
-# require 'capistrano/rvm'
-# require 'capistrano/rbenv'
-# require 'capistrano/chruby'
-# require 'capistrano/bundler'
-# require 'capistrano/rails/assets'
-# require 'capistrano/rails/migrations'
-# require 'capistrano/passenger'
 
-# Load custom tasks from `lib/capistrano/tasks` if you have any defined
+#
+require 'capistrano/setup'
+require 'capistrano/deploy'
+require 'capistrano/rvm'
+require 'capistrano/bundler'
+require 'capistrano/rails/assets'
+require 'capistrano/rails/migrations'
+require 'thinking_sphinx/capistrano'
+require "whenever/capistrano"
+require 'capistrano/sidekiq'
+require 'capistrano/sidekiq/monit' #to require monit tasks # Only for capistrano3
+
+# Loads custom tasks from `lib/capistrano/tasks' if you have any defined.
+Dir.glob('lib/capistrano/tasks/*.cap').each { |r| import r }
 Dir.glob('lib/capistrano/tasks/*.rake').each { |r| import r }

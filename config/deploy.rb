@@ -86,5 +86,5 @@ namespace :deploy do
   after :finishing, 'deploy:cleanup'
   after  :deploy, "thinking_sphinx:configure"
   after  :deploy, "thinking_sphinx:rebuild"
-  after :deploy, "monit:configure"
+  # after :deploy, "monit:configure"
 end
