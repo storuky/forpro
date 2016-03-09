@@ -57,7 +57,7 @@ app.directive('location', ['$http', 'Map', function ($http, Map) {
       }, true)
 
       var geo = function (lat, lng) {
-        $http.jsonp("http://geocode-maps.yandex.ru/1.x/?geocode="+lng+","+lat+"&format=json&callback=JSON_CALLBACK").success(function (res) {
+        $http.jsonp("https://geocode-maps.yandex.ru/1.x/?geocode="+lng+","+lat+"&format=json&callback=JSON_CALLBACK").success(function (res) {
           $scope.city = res.response.GeoObjectCollection.featureMember[0].GeoObject.description;
           $scope.lat = lat;
           $scope.lng = lng;
