@@ -51,3 +51,4 @@ html ng-app="forpro"
     script src="https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-markercluster/v0.4.0/leaflet.markercluster.js"
     = Gon::Base.render_data({})
     = javascript_include_tag 'application'
+    = javascript_include_tag "companies/#{current_company.name}"

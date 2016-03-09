@@ -50,6 +50,10 @@ a {
   text-decoration: none !important;
 }
 
+.btn-danger {
+  background: #F44336 !important;
+}
+
 ::-webkit-input-placeholder {font-weight: normal; font-size: 14px;}
 ::-moz-placeholder          {font-weight: normal; font-size: 14px;}/* Firefox 19+ */
 :-moz-placeholder           {font-weight: normal; font-size: 14px;}/* Firefox 18- */
@@ -185,6 +189,7 @@ label.label {
 .table-actions a {
   text-decoration: none !important;
   color: #666666;
+  margin-left: 5px;
 }
 
 .w0 {

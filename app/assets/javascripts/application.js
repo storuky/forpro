@@ -21,7 +21,7 @@
 //= require oxymoron
 //= require angular-scroll.min
 //= require_self
-//= require_tree .
+//= require_tree ./application
 
 var app = angular.module("forpro", ["oxymoron", "ui.router", "ngTouch", "duScroll"])
 

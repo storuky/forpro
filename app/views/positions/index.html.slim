@@ -2,11 +2,11 @@
   .page
     a.icon-close.page__close ui-sref="root_path"
     h2.page__title Мои позиции
-    .page-layout.ng-hide ng-hide="ctrl.positions.length"
+    .page-layout.ng-hide ng-show="ctrl.positions.length == 0"
       .no-positions
         p У вас нет ни одной позиции
         a.btn.btn-primary href="/positions/new" Нажмите, чтобы создать
-    table.table.positions-table.ng-hide ng-show="ctrl.positions.length"
+    table.table.positions-table.ng-hide ng-hide="ctrl.positions.length == 0"
       thead
         tr
           th
@@ -28,7 +28,7 @@
             | {{position.trade_type_title}}
           td ng-click="Position.goTo(position)"
             | {{position.product.title}}
-          td ng-click="Position.goTo(position)"
+          td.w0 ng-click="Position.goTo(position)"
             | {{position.price | currency}}
             .dim
               | {{position.currency.title}}/{{position.price_weight_dimension.title}}
@@ -43,3 +43,5 @@
           td.w0.table-actions
             a.btn-icon ui-sref="edit_position_path(position)"
               i.icon-pencil.table-icon
+            a.btn-icon.btn-danger ng-click="ctrl.destroy(position)"
+              i.icon-trash.table-icon
