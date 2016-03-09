@@ -3,9 +3,9 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
-  before_action :set_locale
   before_action :set_current_company
   before_action :set_current_user
+  before_action :set_locale
   before_action :set_form_builder
   after_action :set_csrf_cookie
   
@@ -69,7 +69,7 @@ class ApplicationController < ActionController::Base
 
     def set_current_user
       if session[:user_id]
-        User.current_user = User.find_by(id: session[:user_id])
+        User.current_user = User.where(id: session[:user_id]).first
       end
     end
 
@@ -79,7 +79,6 @@ class ApplicationController < ActionController::Base
       else
         I18n.locale = session[:locale]
       end
-
       I18n.locale ||= extract_locale
     end
 
