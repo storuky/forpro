@@ -50,6 +50,8 @@
             .position-page__avatar
               - if @position.logo
                 = image_tag @position.logo.body.thumb, size: "100x100"
+              - else
+                img src="/avatar.png" width="100" height="100"
             .position-page__contacts__info
               .position-page__contacts__name = @position.name
               .list
@@ -61,7 +63,8 @@
                   .list-title
                     | #{Position.human_attribute_name("email")}:
                   .list-description
-                    a.link href="mailto:#{@position.email}" = @position.email
+                    a.link email="ctrl.position.email"
+                      = I18n.t("position.show_email")
                 - if @position.website.present?
                   .list-row
                     .list-title
@@ -96,6 +99,6 @@
         .page-footer__text
           = Position.human_attribute_name("expire_date")
           | &nbsp;
-          strong ng-bind="ctrl.position.updated_at | expireDate"
+          strong title="Если позиция не будет поднята до этого времени." ng-bind="ctrl.position.updated_at | expireDate"
       .col-2.align-right
         a.btn.btn-primary ng-click="ctrl.touch(ctrl.position)" Поднять

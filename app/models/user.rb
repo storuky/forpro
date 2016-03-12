@@ -11,4 +11,8 @@ class User < ActiveRecord::Base
       @@current_user
     end
   end
+
+  def public_fields
+    self.attributes.slice("id", "name", "position_ids")
+  end
 end

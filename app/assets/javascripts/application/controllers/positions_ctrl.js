@@ -27,9 +27,7 @@ app.controller('PositionsCtrl', ['$scope', 'action', 'Map', 'Position', function
       Position.create(params, function (res) {
         Map.addMarker(res.position);
         if (!gon.current_user) {
-          gon.current_user = {
-            position_ids: [res.position.id]
-          }
+          gon.current_user = res.current_user;
         } else {
           gon.current_user.position_ids.push(res.position.id)
         }
@@ -61,7 +59,7 @@ app.controller('PositionsCtrl', ['$scope', 'action', 'Map', 'Position', function
   action(['new', 'edit'], function () {
     $scope.$watch('ctrl.position', function (position) {
       if (position && (position.name || position.email || position.phone || position.website || position.logo || position.address || position.currency_id)) {
-        var contacts = store.get('contacts');
+        var contacts = store.get('contacts') || {};
         angular.extend(contacts, _.compactObject(_.pick(position, 'name', 'email', 'phone', 'currency_id', 'website', 'logo', 'lat', 'lng', 'address')))
         store.set('contacts', contacts);
       }

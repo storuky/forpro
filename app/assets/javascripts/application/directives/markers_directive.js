@@ -18,8 +18,7 @@ app.directive('markers', [function(){
                         + "<div class='marker-label__body'>{{position.product_title || position.product.title || '"+gon.translations.position.product+"'}}</div>"
                       + "</a>"
                       + "<div class='markers-choose__description'>"
-                        + "{{marker.title}}"
-                        + "<div class='markers-choose__price'>{{marker.price}}</div>"
+                        + "<div class='markers-choose__price'>Бесплатно</div>"
                       + "</div>"
                   + "</div>"
       return result;

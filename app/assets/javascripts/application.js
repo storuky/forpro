@@ -19,13 +19,20 @@
 //= require oxymoron/store
 //= require oxymoron/underscore
 //= require oxymoron
+//= require angular-no-captcha.min
 //= require angular-scroll.min
 //= require_self
 //= require_tree ./application
 
-var app = angular.module("forpro", ["oxymoron", "ui.router", "ngTouch", "duScroll"])
+var app = angular.module("forpro", ["oxymoron", "ui.router", "ngTouch", "duScroll", "noCAPTCHA"])
 
-app.run(['$rootScope', 'Search', 'Map', function ($rootScope, Search, Map) {
+app.run(['$rootScope', 'Search', 'Map', '$state', '$timeout', function ($rootScope, Search, Map, $state, $timeout) {
   $rootScope.gon = gon;
-  $rootScope.Routes = Routes;
+  $rootScope.Routes = Routes; 
+  window.$state = $state;
+  if (!gon.current_user) {
+    $timeout(function () {
+      $state.go("about_path")
+    })
+  }
 }])

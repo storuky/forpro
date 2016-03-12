@@ -7,6 +7,7 @@
   cursor: pointer;
   margin-top: -30px;
   margin-left: -8px;
+  font-weight: normal;
 }
   
 .marker-label.cluster {
@@ -107,14 +108,9 @@
 
 
 .markers-choose .marker-label {
-  top: 60px;
+  top: 74px;
   left: 50%;
-  margin-left: -57px;
-}
-
-.markers-choose.active .markers-choose__description, .markers-choose:hover .markers-choose__description {
-  height: 55px;
-  padding: 10px;
+  margin-left: -42px;
 }
 
 .markers-choose__description {
@@ -131,60 +127,62 @@
   transition: .3s;
 }
 
-.markers-choose:hover .markers-choose__price,
-.markers-choose.active .markers-choose__price {
-  margin-top: 3px;
-}
-
 .markers-choose__price {
   font-size: 12px;
   margin-top: 5px;
 }
 
-$colors: (("green", #428C45), ("blue", #0d89ec), ("red", #F44336), ("grey", #607D8B), ("brown", #795548), ("orange", #EF6C00));
-@each $name, $color in $colors {
+$colors: (
+          ("agrofor-1", #FAD131, #2B2B2B), ("agrofor-2", #FFC107, #2B2B2B), ("agrofor-3", #FFA726, #2B2B2B), ("agrofor-4", #FF8A65, #2b2b2b), ("agrofor-5", #8BC34A, #2b2b2b),
+          ("woodfor-1", #689F38, white), ("woodfor-2", #3A983E, white), ("woodfor-3", #795548, white),
+          ("fuelfor-1", #0D89EC, white), ("fuelfor-2", #039BE5, white), ("fuelfor-3", #0097A7, white)
+         );
+
+@each $name, $background, $color in $colors {
 
   .color-#{$name} {
-    color: $color !important;
+    color: $background !important;
   }
   
   .border-#{$name} {
-    border-color: $color !important;
+    border-color: $background !important;
   }
 
   .markers-choose--#{$name}.active {
-    border: 3px solid $color;
+    border: 3px solid $background;
   }
 
   .markers-choose--#{$name}.active {
-    border: 3px solid $color;
+    border: 3px solid $background;
   }
 
   .marker-label.marker-label--#{$name} {
     &:after {
-      border-color: transparent $color transparent transparent;
+      border-color: transparent $background transparent transparent;
     }
 
     .marker-label__head {
-      background: $color;
+      background: $background;
+      color: $color;
     }
 
       
     .marker-label__head:before {
-      background: $color;
+      background: $background;
     }
       
     .marker-label__body:before {
-      background: lighten($color, 8%);
+      background: lighten($background, 8%);
     }
       
     &:hover > .marker-label__body,
     &:hover > .marker-label__body:before {
-      background: lighten($color, 12%);
+      background: lighten($background, 12%);
     }
 
     .marker-label__body {
-      background: lighten($color, 8%);
+      background: lighten($background, 8%);
+      color: $color;
     }
   }
 }

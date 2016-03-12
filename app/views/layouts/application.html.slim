@@ -17,7 +17,7 @@ html ng-app="forpro"
       = image_tag "logos/#{current_company.name}.svg", width: 42, height: 35
     .search ng-class="{focused: Search.focused == true}" click-outside="Search.focused = false" click-outside-if="Search.focused"
       .search__input
-        input type="text" placeholder="#{I18n.t("position.search_placeholder")}" ng-model="Search.query" ng-model-options="{debounce: 300}" ng-focus="Search.focused = true"
+        input type="text" placeholder="#{I18n.t("position.search_placeholder.#{current_company.name}")}" ng-model="Search.query" ng-model-options="{debounce: 300}" ng-focus="Search.focused = true"
       .search__action
         = I18n.t("position.search")
       .search__footer.ng-cloak
@@ -29,16 +29,9 @@ html ng-app="forpro"
           = render "search/form"
         .search__counts
           span ng-show="Search.result !== undefined"
-            | Найдено&nbsp;
-            strong
-              | {{Search.result.length}}
-            | &nbsp;позиций.&nbsp;
-          span ng-show="Search.inView"
-            | В области карты –&nbsp;
-            strong
-              | {{Search.inView}}
-    
-
+            = I18n.t("position.founded").html_safe
+          span ng-show="Search.inView!==undefined && Search.result!==undefined"
+            = I18n.t("position.in_viewport").html_safe
     
     nav.nav
       a.new-position-btn href="/positions/new"
@@ -57,16 +50,11 @@ html ng-app="forpro"
     .view-switcher
       .map-locator locate=""
         i.icon-locate
-      /.switcher ng-model="viewType"
-        .switcher__item.active value="map"
-          | Карта
-        .switcher__item value="list"
-          | Список
-
     
     ui-view
       div ng-non-bindable=""
         = yield
+
     script src='https://api.mapbox.com/mapbox.js/v2.3.0/mapbox.js'
     script src="https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-markercluster/v0.4.0/leaflet.markercluster.js"
     = Gon::Base.render_data({})

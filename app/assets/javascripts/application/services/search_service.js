@@ -13,8 +13,15 @@ app.service('Search', ['$http', 'Position', 'Map', '$rootScope', function ($http
   $rootScope.$watch(function () {
     return Search.query
   }, function (query) {
-    if (query !== undefined)
-      Search.go({query: query}, {fitBounds: !!query})
+    if (query === "") {
+      Search.go({query: query})
+      var contacts = store.get('contacts') || {};
+      if (contacts.lat && contacts.lng)
+        map.setView([contacts.lat, contacts.lng], 13);
+    }
+    else if (query !== undefined) {
+      Search.go({query: query}, {fitBounds: true})
+    }
   })
 
   Search.updateInView = function () {

@@ -113,6 +113,9 @@ a.icon-close.page__close ui-sref="root_path"
         label.label = Position.human_attribute_name("documents")
         
         div documents="ctrl.position.documents" edit="true"
+          label.position-documents__item-add for="files"
+            i.icon-plus
+            span Прикрепить файлы
   div
     h2.page__title = I18n.t("position.additional")
   .page-layout style="padding-top: 0"
@@ -121,6 +124,8 @@ a.icon-close.page__close ui-sref="root_path"
       div
         markers ng-model="ctrl.position.color" position="ctrl.position"
 
+    .row
+      no-captcha ng-if="!gon.current_user" g-recaptcha-response="ctrl.position.recaptcha" theme="light"
   .page-footer
     .col-2
       .page-footer__text

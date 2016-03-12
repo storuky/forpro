@@ -1,16 +1,13 @@
 class UsersController < ApplicationController
-  def locale
+  def create
     respond_to do |format|
       format.json {
-        if ["ru", "en"].include?(params["locale"])
-          if current_user
-            current_user.update(locale: params["locale"])
-          end
-          
-          session[:locale] = params["locale"]
-          render json: {reload: true}
+        if !current_user && verify_captcha(params[:recaptcha])
+          user = User.create
+          session[:user_id] = user.id
+          render json: {msg: "Вы успешно вошли в систему"}
         else
-          render json: {msg: "Такого языка нет в системе"}, status: 422
+          render json: {msg: "Подтвердите, что вы не робот."}, status: 422
         end
       }
     end

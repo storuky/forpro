@@ -293,3 +293,10 @@ pre {
   white-space: pre-line;
   line-height: 1.5;
 }
+.clearfix:after {
+  content: "";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}

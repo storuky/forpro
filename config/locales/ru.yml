@@ -31,7 +31,7 @@ ru:
     terms_of_deal: Условия сделки
     contacts: Контактная информация
     no_desctiption: Нет описания
-    click_or_drag: Кликните или перетащите файлы в эту область
+    click_or_drag: "Нажмите, чтобы выбрать файлы"
     position_will_be_delete: Позиция будет удалена
     create: Создать
     update: Сохранить
@@ -39,13 +39,39 @@ ru:
     select_product: Выберите товар
     new_position: "+ Создать позицию"
     my_positions: "Мои позиции"
-    search_placeholder: Поиск...
+    search_placeholder:
+      agrofor: "Например, продать пшеницу"
+      woodfor: "Например, продать брус"
+      fuelfor: "Например, продать масло"
     search: Найти
     chose_color: "Выберите цвет, наиболее подходящий вашей позиции"
     click_for_create: "Кликните, чтобы создать"
     no_positions: У вас нет ни одной позиции
     my_positions: Мои позиции
-  
+    founded: "Найдено <strong>{{Search.result.length}} {{Search.result.length | plur:['позиция', 'позиции', 'позиций']}}</strong>."
+    in_viewport: "В области карты – <strong>{{Search.inView}} {{Search.inView | plur:['позиция', 'позиции', 'позиций']}}</strong>"
+    show_email: Показать email
+    plur:
+      - позиция
+      - позиции
+      - позиций
+    trade_types_variation:
+      buy:
+        - закупка
+        - покупка
+        - купить
+        - выкупить
+        - закупить
+        - приобрести
+        - куплю
+        - покупаю
+      sell:
+        - продажа
+        - продать
+        - сбыть
+        - продам
+        - продаю
+
   company:
     agrofor:
       title: "Агрофор: Международная аграрная биржа"

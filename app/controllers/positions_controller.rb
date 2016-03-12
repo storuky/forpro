@@ -1,6 +1,7 @@
 class PositionsController < ApplicationController
   before_action :set_position, only: [:show, :edit, :destroy, :update, :touch]
   before_action :check_permission, only: [:update, :destroy, :edit]
+  before_action :check_user, only: [:update, :destroy, :create]
 
   def index
     respond_to do |format|
@@ -21,15 +22,9 @@ class PositionsController < ApplicationController
       format.json {
         @position = Position.new(position_params)
         if @position.save
-          if current_user
-            user_params[:position_ids] = (current_user.position_ids << @position.id)
-            current_user.update(user_params)
-          else
-            user_params[:position_ids] = [@position.id]
-            current_user = User.create(user_params)
-            session[:user_id] = current_user.id
-          end
-          render json: {msg: "Позиция успешно создана", redirect_to: "position_path", redirect_options: {id: @position.id}, position: @position}
+          user_params[:position_ids] = (current_user.position_ids << @position.id)
+          current_user.update(user_params)
+          render json: {msg: "Позиция успешно создана", redirect_to: "position_path", current_user: current_user.public_fields, redirect_options: {id: @position.id}, position: @position}
         else
           render json: {msg: "Не все поля формы заполнены верно", errors: @position.errors}, status: 422
         end
@@ -135,6 +130,12 @@ class PositionsController < ApplicationController
             render json: {msg: "Нет прав для выполнения данного действия"}, status: 422 
           }
         end
+      end
+    end
+
+    def check_user
+      unless current_user
+        render json: {msg: "Вы не авторизованы", reload: true}, status: 422
       end
     end
 end

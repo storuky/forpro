@@ -14,6 +14,14 @@ class Position < ActiveRecord::Base
     Currency.pluck(:id) rescue []
   end
 
+  def self.colors
+    %w(
+        agrofor-1 agrofor-2 agrofor-3 agrofor-4 agrofor-5
+        fuelfor-1 fuelfor-2 fuelfor-3
+        woodfor-1 woodfor-2 woodfor-3
+    )
+  end
+
   has_many :images
   has_many :documents
   belongs_to :logo, class_name: Logo
@@ -39,7 +47,7 @@ class Position < ActiveRecord::Base
   validates :website, :url => {:allow_blank => true}
   validate :less_then_weight
 
-  validates :color, inclusion: { in: %w(green blue red grey brown orange) }
+  validates :color, inclusion: { in: Position.colors }
   validates :trade_type, inclusion: { in: ["buy", "sell"] }
   validates :product_id, inclusion: { in: Position.products_ids }
   validates :weight_dimension_id, inclusion: { in: Position.dimensions_ids }
@@ -142,9 +150,11 @@ class Position < ActiveRecord::Base
     def set_index_field
       temp = [title, description]
       [:en, :ru].each do |locale|
-        temp << I18n.t("trade_type.#{trade_type}", :locale => locale)
         temp << I18n.t("category.#{category.title}", :locale => locale)
         temp << I18n.t("product.#{product.title}", :locale => locale)
+        I18n.t("position.trade_types_variation.#{trade_type}", :locale => locale).each do |t|
+          temp << t
+        end
       end
       self.index_field = temp.join(" ")
     end

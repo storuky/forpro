@@ -31,19 +31,39 @@ en:
     terms_of_deal: Terms of a deal
     contacts: Contacts
     no_desctiption: No description
-    click_or_drag: Click here or drag files to this area
+    click_or_drag: Click here for upload files
     create: Create
     update: Update
     additional: Additional
     select_product: Select a product
     new_position: "+ New position"
     my_positions: "My positions"
-    search_placeholder: Search...
+    search_placeholder:
+      agrofor: "For example, Buy wheat"
+      woodfor: "For example, Buy brus"
+      fuelfor: "For example, Buy petrol"
     search: Search
     chose_color: Сhoose the color of your position
     click_for_create: Click for create
     no_positions: No positions
     my_positions: My positions
+    founded: "<strong>{{Search.result.length}} {{Search.result.length | plur:['position', 'positions']}}.</strong> was found in the world."
+    in_viewport: "In the viewport it's <strong>{{Search.inView}} {{Search.inView | plur:['position', 'positions']}}</strong>"
+    show_email: Show email
+    plur:
+      - position
+      - positions
+    trade_types_variation:
+      buy:
+        - buy
+        - purchase
+        - acquire
+      sell:
+        - sale
+        - sell
+        - selling
+        - selling
+        - realization
   
   company:
     agrofor:

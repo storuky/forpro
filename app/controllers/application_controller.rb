@@ -33,6 +33,11 @@ class ApplicationController < ActionController::Base
       end
     end
 
+    def verify_captcha response
+      result = RestClient.post("https://www.google.com/recaptcha/api/siteverify", secret: "6LcJqhoTAAAAAGdqEnh7deIT5UjmVlimHlJ1Ad1d", response: response)
+      JSON.parse(result)["success"]
+    end
+
     def cache_if(condition, name = {}, options = nil, &block)
       if condition
         Rails.cache.fetch(name, options, &block)
@@ -70,6 +75,8 @@ class ApplicationController < ActionController::Base
     def set_current_user
       if session[:user_id]
         User.current_user = User.where(id: session[:user_id]).first
+      else
+        User.current_user = nil
       end
     end
 
@@ -88,9 +95,8 @@ class ApplicationController < ActionController::Base
         if current_user
           I18n.locale = current_user.locale
         else
-          I18n.locale = session[:locale]
+          I18n.locale = session[:locale] || extract_locale
         end
-        I18n.locale ||= extract_locale
       end
     end
 
@@ -101,12 +107,10 @@ class ApplicationController < ActionController::Base
         products: Product.all_from_cache(serializer: ProductSerializer),
         categories: Category.all_from_cache(serializer: CategorySerializer),
         trade_type: I18n.t("trade_type"),
-        markers: I18n.t("markers.#{current_company.name}")
+        markers: Position.colors.map {|t| {name: t}}.select{|t| t[:name].include?(current_company.name)}
       }
 
-      gon.current_user = {
-        position_ids: (current_user.position_ids rescue [])
-      }
+      gon.current_user = current_user.public_fields rescue nil
 
       gon.translations = {
         position: I18n.t("activerecord.attributes.position")

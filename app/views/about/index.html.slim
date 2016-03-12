@@ -1,0 +1,24 @@
+.overlay
+  .page.about.cleafix
+    .about-top-image
+      = image_tag "about/#{current_company.name}_#{I18n.locale}_top.png"
+
+    .about-content
+      .about-logo
+        = image_tag "logos/#{current_company.name}_#{I18n.locale}.png", width: 325
+      h1.about-title
+        div Высокий спрос.
+        div Хорошее предложение.
+      .about-text
+        | Добро пожаловать, на&nbsp;
+        strong бесплатную торговую площадку
+        | &nbsp;нового поколения! С&nbsp;нами, Вы сможете легко и быстро&nbsp;
+        strong найти поставщиков
+        |, либо&nbsp;
+        strong продать свой товар
+        |.
+
+      .about-start
+        .about-start__title Нажмите на галочку, чтобы начать
+        .about-no-captcha
+          no-captcha ng-if="!gon.current_user" g-recaptcha-response="ctrl.recaptcha" theme="light"

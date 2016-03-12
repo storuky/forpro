@@ -13,3 +13,45 @@
 .switcher__item.active:before {
   background: #4FA853;
 }
+
+.search__action {
+  background: #4FA853;
+  color: white;
+}
+
+.new-position-btn {
+  background: #4FA853;
+  color: white;
+}
+
+.search__action:before {
+  border-color: transparent transparent transparent #4FA853;
+}
+
+.search__action:hover {
+  background: #5BB45E;
+}
+
+.search__action:hover:before {
+  border-color: transparent transparent transparent #5BB45E;
+}
+
+.new-position-btn:hover {
+  background: #5BB45E;
+}
+
+.search.focused .search__input input[type="text"] {
+  border: 2px solid #4FA853;
+}
+
+.images__arrow {
+  background: rgba(139, 195, 74, .62);
+}
+
+.images__arrow:hover {
+  background: rgba(139, 195, 74, .9);
+}
+
+.position-documents__item__extension {
+  background: #4FA853;
+}

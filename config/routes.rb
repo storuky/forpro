@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   end
 
   get "search" => "search#index"
+  get "about" => "about#index"
 
   scope :uploads, controller: "uploads" do
     post "files"
