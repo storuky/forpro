@@ -25,9 +25,7 @@
 
 var app = angular.module("forpro", ["oxymoron", "ui.router", "ngTouch", "duScroll"])
 
-app.run(['$rootScope', 'Position', function ($rootScope, Position) {
+app.run(['$rootScope', 'Search', 'Map', function ($rootScope, Search, Map) {
   $rootScope.gon = gon;
   $rootScope.Routes = Routes;
-
-  window.Position = Position;
 }])

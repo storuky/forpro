@@ -1,23 +1,15 @@
-.nav__link--primary {
-  color: #428C46;
-}
-
-.nav__link--primary:hover {
-  color: #4DB453;
-}
-
 .btn-primary {
   color: #fff;
-  background-color: rgba(139, 195, 74, 1);
+  background-color: #4FA853;
 }
 .btn-primary:hover {
-  background: rgb(148, 213, 73);
+  background: #5BB45E;
 }
 
 .page__title {
-  border-color: #8BC34A;
+  border-color: #4FA853;
 }
 
 .switcher__item.active:before {
-  background: #8BC34A;
+  background: #4FA853;
 }

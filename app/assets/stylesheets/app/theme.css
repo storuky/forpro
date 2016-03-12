@@ -54,6 +54,20 @@ a {
   background: #F44336 !important;
 }
 
+.btn-plus {
+  padding-left: 25px !important;
+}
+
+.btn-plus .btn-addon {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  font-weight: lighter;
+  font-size: 18px;
+  padding: 3px 7px;
+}
+
 ::-webkit-input-placeholder {font-weight: normal; font-size: 14px;}
 ::-moz-placeholder          {font-weight: normal; font-size: 14px;}/* Firefox 19+ */
 :-moz-placeholder           {font-weight: normal; font-size: 14px;}/* Firefox 18- */

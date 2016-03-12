@@ -1,4 +1,4 @@
-app.service('Map', ['$rootScope', '$filter', function ($rootScope, $filter) {
+app.service('Map', ['$rootScope', '$filter', 'Position', function ($rootScope, $filter, Position) {
   var Map = this;
 
   Map.markerLayout = function (position) {
@@ -13,6 +13,7 @@ app.service('Map', ['$rootScope', '$filter', function ($rootScope, $filter) {
 
   Map.buildCluster = function () {
     Map.cluster = new L.MarkerClusterGroup({
+      spiderfyDistanceMultiplier: 3.5,
       iconCreateFunction: function(cluster) {
         return L.divIcon({
           'marker-symbol': cluster.getChildCount(),
@@ -39,7 +40,8 @@ app.service('Map', ['$rootScope', '$filter', function ($rootScope, $filter) {
   }
 
 
-  Map.drawMarkers = function (positions) {
+  Map.drawMarkers = function (positions, options) {
+    var options = options || {};
     Map.markers = {};
     if (Map.cluster) {
       Map.cluster.clearLayers()
@@ -53,7 +55,7 @@ app.service('Map', ['$rootScope', '$filter', function ($rootScope, $filter) {
     })
 
     map.addLayer(Map.cluster);
-    if (positions.length)
+    if (positions.length && options.fitBounds)
       map.fitBounds(Map.cluster.getBounds());
   }
 

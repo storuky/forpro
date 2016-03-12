@@ -74,12 +74,24 @@ class ApplicationController < ActionController::Base
     end
 
     def set_locale
-      if current_user
-        I18n.locale = current_user.locale
+      if params[:lang].present?
+        I18n.locale = params[:lang]
+        
+        if current_user
+          if current_user.locale != params[:lang]
+            current_user.update(locale: params[:lang])
+          end
+        else
+          session.locale = params[:lang]
+        end
       else
-        I18n.locale = session[:locale]
+        if current_user
+          I18n.locale = current_user.locale
+        else
+          I18n.locale = session[:locale]
+        end
+        I18n.locale ||= extract_locale
       end
-      I18n.locale ||= extract_locale
     end
 
     def set_gon

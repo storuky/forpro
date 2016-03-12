@@ -18,7 +18,7 @@ ru:
         files: Изображения и документы
         images: Изображения
         documents: Документы
-        location: Меслоположение
+        location: Местоположение
         logo: Логотип / Фото
         expire_date: Дата истечения
     errors:
@@ -39,7 +39,8 @@ ru:
     select_product: Выберите товар
     new_position: "+ Создать позицию"
     my_positions: "Мои позиции"
-    search: Поиск...
+    search_placeholder: Поиск...
+    search: Найти
     chose_color: "Выберите цвет, наиболее подходящий вашей позиции"
     click_for_create: "Кликните, чтобы создать"
     no_positions: У вас нет ни одной позиции

@@ -13,25 +13,44 @@ html ng-app="forpro"
     base href="/"
 
   body ng-controller="MainCtrl as ctrl"
-    header
-      a.logo
-        = image_tag "logos/#{current_company.name}.svg", width: 42, height: 35
-      .search
-        .search__input
-          i.search__input__icon.icon-magnifier
-          input type="text" placeholder="#{I18n.t("position.search")}" ng-model="Search.query" ng-model-options="{debounce: 300}"
-      
+    a.logo
+      = image_tag "logos/#{current_company.name}.svg", width: 42, height: 35
+    .search ng-class="{focused: Search.focused == true}" click-outside="Search.focused = false" click-outside-if="Search.focused"
+      .search__input
+        input type="text" placeholder="#{I18n.t("position.search_placeholder")}" ng-model="Search.query" ng-model-options="{debounce: 300}" ng-focus="Search.focused = true"
+      .search__action
+        = I18n.t("position.search")
+      .search__footer.ng-cloak
+        /.search__tags.clearfix
+          a.btn.btn-primary.search__add-tag.btn-plus ng-click="Search.additional = !Search.additional"
+            .btn-addon +
+            | Добавить
+        /.search__additional.ng-hide ng-show="Search.additional && Search.focused"
+          = render "search/form"
+        .search__counts
+          span ng-show="Search.result !== undefined"
+            | Найдено&nbsp;
+            strong
+              | {{Search.result.length}}
+            | &nbsp;позиций.&nbsp;
+          span ng-show="Search.inView"
+            | В области карты –&nbsp;
+            strong
+              | {{Search.inView}}
+    
 
-      nav.nav
-        a.nav__link.nav__link--primary href="/positions/new" = I18n.t("position.new_position")
-        a.nav__link href="/positions" = I18n.t("position.my_positions")
-        a.nav__link.nav__link__lang ng-click="showLocaleList = !showLocaleList; $event.stopPropagation()"
-          span.nav__link__lang__title
-            = I18n.locale.to_s.upcase
-          i.nav__lang__arrow.caret
-        .nav__lang-list.ng-hide ng-show="showLocaleList" click-outside="showLocaleList = false" click-outside-if="showLocaleList"
-          a ng-click="setLocale('ru')" RU
-          a ng-click="setLocale('en')" EN
+    
+    nav.nav
+      a.new-position-btn href="/positions/new"
+        | +
+      a.nav__link href="/positions" = I18n.t("position.my_positions")
+      a.nav__link.nav__link__lang ng-click="showLocaleList = !showLocaleList; $event.stopPropagation()"
+        span.nav__link__lang__title
+          = I18n.locale.to_s.upcase
+        i.nav__lang__arrow.caret
+      .nav__lang-list.ng-hide ng-show="showLocaleList" click-outside="showLocaleList = false" click-outside-if="showLocaleList"
+        a href="?lang=ru" target="_self" RU
+        a href="?lang=en" target="_self" EN
 
     .map#map ng-class="{blur: Map.blur}"
 

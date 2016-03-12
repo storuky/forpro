@@ -189,30 +189,6 @@ $colors: (("green", #428C45), ("blue", #0d89ec), ("red", #F44336), ("grey", #607
   }
 }
 
-// .marker-label.marker-label--blue {
-//   &:after {
-//     border-color: transparent #0d89ec transparent transparent;
-//   }
-
-//   .marker-label__head {
-//     background: #0d89ec;
-//   }
-
-    
-//   .marker-label__head:before {
-//     background: #0d89ec;
-//   }
-    
-//   .marker-label__body:before {
-//     background: #2196F3;
-//   }
-    
-//   &:hover > .marker-label__body,
-//   &:hover > .marker-label__body:before {
-//     background: #2c9bf4;
-//   }
-
-//   .marker-label__body {
-//     background: #2196F3;
-//   }
-// }
+.leaflet-marker-icon:hover {
+  z-index: 2000000 !important;
+}

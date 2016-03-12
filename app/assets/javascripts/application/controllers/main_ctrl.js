@@ -9,4 +9,9 @@ app.controller('MainCtrl', ['$scope', 'Map', 'Search', 'User', function ($scope,
   }
 
   Search.go()
+
+  map.on('move', function() {
+    Search.updateInView();
+    $scope.$apply();
+  });
 }])
