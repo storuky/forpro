@@ -22,8 +22,10 @@ class PositionsController < ApplicationController
       format.json {
         @position = Position.new(position_params)
         if @position.save
-          user_params[:position_ids] = (current_user.position_ids << @position.id)
-          current_user.update(user_params)
+          current_user.update(user_params.merge({
+            position_ids: (current_user.position_ids << @position.id),
+            last_created_at: DateTime.now
+          }))
           render json: {msg: "Позиция успешно создана", redirect_to: "position_path", current_user: current_user.public_fields, redirect_options: {id: @position.id}, position: @position}
         else
           render json: {msg: "Не все поля формы заполнены верно", errors: @position.errors}, status: 422
@@ -134,8 +136,10 @@ class PositionsController < ApplicationController
     end
 
     def check_user
-      unless current_user
+      if !current_user
         render json: {msg: "Вы не авторизованы", reload: true}, status: 422
+      elsif current_user.last_created_at && (Time.now - current_user.last_created_at.to_time)/1.minute < 1
+        render json: {msg: "Нельзя создавать позиции чаще 1 раза в минуту. Осталось #{60 - ((Time.now - current_user.last_created_at.to_time)/1.second).to_i} секунд"}, status: 422
       end
     end
 end

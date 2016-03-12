@@ -111,7 +111,7 @@ class ApplicationController < ActionController::Base
       }
 
       gon.current_user = current_user.public_fields rescue nil
-
+      gon.current_company = current_company.marshal_dump
       gon.translations = {
         position: I18n.t("activerecord.attributes.position")
       }

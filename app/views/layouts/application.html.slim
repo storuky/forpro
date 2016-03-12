@@ -30,6 +30,7 @@ html ng-app="forpro"
         .search__counts
           span ng-show="Search.result !== undefined"
             = I18n.t("position.founded").html_safe
+          | &nbsp;
           span ng-show="Search.inView!==undefined && Search.result!==undefined"
             = I18n.t("position.in_viewport").html_safe
     
