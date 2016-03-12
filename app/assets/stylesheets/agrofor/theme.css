@@ -45,12 +45,12 @@
 }
 
 .images__arrow {
-  background: rgb(255, 219, 76, .62);
+  background: rgba(255, 219, 76, .62);
 }
 
 
 .images__arrow:hover {
-  background: rgb(255, 219, 76, .9);
+  background: rgba(255, 219, 76, .9);
 }
 
 .position-documents__item__extension {

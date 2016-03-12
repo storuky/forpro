@@ -45,11 +45,11 @@
 }
 
 .images__arrow {
-  background: rgb(33, 150, 243, .62);
+  background: rgba(33, 150, 243, .62);
 }
 
 .images__arrow:hover {
-  background: rgb(33, 150, 243, .9);
+  background: rgba(33, 150, 243, .9);
 }
 
 .position-documents__item__extension {
