@@ -65,3 +65,5 @@ gem 'premailer-rails'
 gem 'file_validators'
 gem "validate_url"
 gem "rest-client"
+
+gem "dynamic_sitemaps"

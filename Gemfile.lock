@@ -112,6 +112,7 @@ GEM
       devise (~> 3.2)
     domain_name (0.5.20160309)
       unf (>= 0.0.5, < 1.0.0)
+    dynamic_sitemaps (2.0.0)
     erubis (2.7.0)
     eventmachine (1.0.9.1)
     execjs (2.6.0)
@@ -327,6 +328,7 @@ DEPENDENCIES
   coffee-rails (~> 4.1.0)
   devise
   devise-async
+  dynamic_sitemaps
   factory_girl_rails
   faker
   file_validators

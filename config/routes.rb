@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
   root to: "home#index"
+
+  get "sitemap.xml" => "home#sitemap", format: :xml, as: :sitemap
+  get "robots.txt" => "home#robots", format: :text, as: :robots
+
   resources :users do
     collection do
       put "locale"
