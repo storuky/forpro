@@ -36,10 +36,10 @@ class PositionSerializer < ActiveModel::Serializer
   end
 
   def lat
-    object.lat || 55.878876
+    object.lat
   end
 
   def lng
-    object.lng || 36.994409
+    object.lng
   end
 end

@@ -8,6 +8,7 @@ app.directive('location', ['$http', 'Map', function ($http, Map) {
       lat: "=",
       lng: "=",
       address: "=",
+      map: "=",
       draggable: "=",
       position: "=",
     }, // {} = isolate, true = child, false/undefined = no change
@@ -20,13 +21,49 @@ app.directive('location', ['$http', 'Map', function ($http, Map) {
     // transclude: true,
     // compile: function(tElement, tAttrs, function transclude(function(scope, cloneLinkingFn){ return function linking(scope, elm, attrs){}})),
     link: function($scope, iElm, iAttrs, controller) {
-      var initMap = $scope.$watch('lat', function () {
-        if ($scope.lat) {
+      var initMap = $scope.$watch('position', function () {
+        if ($scope.position) {
           $scope.map = L.mapbox.map(iElm[0], 'mapbox.streets')
-                               .setView([$scope.lat, $scope.lng], 13);
+                               .setView([$scope.lat || 55.75396, $scope.lng || 37.620393], 13);
 
           $scope.map.scrollWheelZoom.disable();
           
+
+          if ($scope.draggable) {
+            $scope.map.on('click', function(e) {
+              if ($scope.marker) {
+                $scope.marker.setLatLng(e.latlng);
+              }
+              geo(e.latlng.lat, e.latlng.lng);
+            });
+          }
+
+          $scope.map.on('locationfound', function(e) {
+            var contacts = store.get('contacts') || {};
+            contacts.lat = e.latlng.lat
+            contacts.lng = e.latlng.lng
+            store.set("contacts", contacts)
+
+            if ($scope.marker) {
+              $scope.marker.setLatLng(e.latlng);
+            }
+
+            $scope.map.setView(e.latlng, 13);
+            $scope.lng = contacts.lng;
+            $scope.lat = contacts.lat;
+            geo(e.latlng.lat, e.latlng.lng);
+            $scope.$apply();
+          })
+          
+          initMap();
+        }
+      })
+
+      var initMarker = $scope.$watch('lat', function () {
+        if ($scope.lat) {
+          
+          $scope.map.setView([$scope.lat, $scope.lng], 13);
+
           $scope.marker = L.marker([$scope.lat, $scope.lng], {
                   icon: L.divIcon({
                     html: ''
@@ -39,14 +76,7 @@ app.directive('location', ['$http', 'Map', function ($http, Map) {
             geo(e.target._latlng.lat, e.target._latlng.lng);
           })
 
-          if ($scope.draggable) {
-            $scope.map.on('click', function(e) {
-              $scope.marker.setLatLng(e.latlng);
-              geo(e.latlng.lat, e.latlng.lng);
-            });
-          }
-          
-          initMap();
+          initMarker();
         }
       })
 

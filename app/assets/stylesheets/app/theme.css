@@ -300,3 +300,31 @@ pre {
   clear: both;
   visibility: hidden;
 }
+
+label.label i.small {
+  font-size: 12px;
+  position: absolute;
+  margin-left: 10px;
+}
+
+label.label .addon {
+  float: right;
+  cursor: pointer;
+}
+
+label.label .addon:hover {
+  color: #7D7D7D;
+}
+
+.dotted {
+  border-bottom: 1px dotted;
+}
+
+.gray {
+  color: #ccc;
+}
+
+.block {
+  width: 100%;
+  display: block;
+}

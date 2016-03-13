@@ -3,7 +3,7 @@ L.mapbox.accessToken = 'pk.eyJ1IjoiYWdyb2ZvciIsImEiOiJjaWxmOWJoeHMwMDNldzRsejFza
 var contacts = store.get('contacts') || {};
 
 window.map = L.mapbox.map('map', 'mapbox.streets', {zoomControl: false})
-    .setView([contacts.lat || 55.878876, contacts.lng || 36.994409], 13);
+    .setView([contacts.lat || 55.75396, contacts.lng || 37.620393], 13);
 
 map.on('locationfound', function(e) {
   var contacts = store.get('contacts') || {};

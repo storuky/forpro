@@ -81,8 +81,10 @@ a.icon-close.page__close ui-sref="root_path"
               dimension disabled="true" collection="[{id: 1, title: '%'}]"
       .col-2
         .row
-          label.label.require = Position.human_attribute_name("location")
-          .location#location draggable="true" lat="ctrl.position.lat" lng="ctrl.position.lng" address="ctrl.position.address" city="ctrl.position.city" position="ctrl.position"
+          label.label.require.block
+            = Position.human_attribute_name("location")
+            .addon.dotted locate="" map="ctrl.map" Определить местоположение
+          .location#location draggable="true" lat="ctrl.position.lat" lng="ctrl.position.lng" address="ctrl.position.address" city="ctrl.position.city" position="ctrl.position" map="ctrl.map"
         .row
           label.label.require = Position.human_attribute_name("address")
           = f.text_field :address
