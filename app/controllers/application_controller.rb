@@ -101,7 +101,7 @@ class ApplicationController < ActionController::Base
     end
 
     def set_gon
-      gon.data = cache_if Rails.env.production?, "gon_#{I18n.locale}" do
+      gon.data = cache_if Rails.env.production?, "gon_#{I18n.locale}_#{Company.current_company.name}" do
         {
           weight_dimensions: WeightDimension.all_from_cache(serializer: WeightDimensionSerializer),
           currencies: Currency.all_from_cache(serializer: CurrencySerializer),
