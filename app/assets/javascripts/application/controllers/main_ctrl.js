@@ -11,7 +11,17 @@ app.controller('MainCtrl', ['$scope', 'Map', 'Search', 'User', function ($scope,
   Search.go()
 
   map.on('move', function() {
-    Search.updateInView();
-    $scope.$apply();
+    $scope.safeApply(Search.updateInView)
   });
+
+  $scope.safeApply = function(fn) {
+    var phase = this.$root.$$phase;
+    if(phase == '$apply' || phase == '$digest') {
+      if(fn && (typeof(fn) === 'function')) {
+        fn();
+      }
+    } else {
+      this.$apply(fn);
+    }
+  };
 }])
