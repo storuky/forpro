@@ -80,6 +80,12 @@ app.directive('location', ['$http', 'Map', function ($http, Map) {
         }
       })
 
+      $scope.$watch('[lat, lng]', function () {
+        if ($scope.marker) {
+          $scope.marker.setLatLng([$scope.lat, $scope.lng]);
+        }
+      })
+
       $scope.$watch('position', function (position) {
         if (position && position.trade_type && $scope.marker) {
           $scope.marker._icon.innerHTML = Map.markerLayout(position);
