@@ -76,4 +76,16 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+
+  config.action_mailer.asset_host = Proc.new { |source, request|
+    if request
+      "#{request.protocol}#{request.host_with_port}"
+    else
+      "https://agrofor.pro"
+    end
+  }
+
+  config.action_mailer.default_url_options = {
+    host: "https://agrofor.pro"
+  }
 end
