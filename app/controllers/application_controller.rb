@@ -101,14 +101,16 @@ class ApplicationController < ActionController::Base
     end
 
     def set_gon
-      gon.data = {
-        weight_dimensions: WeightDimension.all_from_cache(serializer: WeightDimensionSerializer),
-        currencies: Currency.all_from_cache(serializer: CurrencySerializer),
-        products: Product.all_from_cache(serializer: ProductSerializer),
-        categories: Category.all_from_cache(serializer: CategorySerializer),
-        trade_type: I18n.t("trade_type"),
-        markers: Position.colors.map {|t| {name: t}}.select{|t| t[:name].include?(current_company.name)}
-      }
+      gon.data = cache_if Rails.env.production?, "gon_#{I18n.locale}" do
+        {
+          weight_dimensions: WeightDimension.all_from_cache(serializer: WeightDimensionSerializer),
+          currencies: Currency.all_from_cache(serializer: CurrencySerializer),
+          products: Product.all_from_cache(serializer: ProductSerializer),
+          categories: Category.all_from_cache(serializer: CategorySerializer),
+          trade_type: I18n.t("trade_type"),
+          markers: Position.colors.map {|t| {name: t}}.select{|t| t[:name].include?(current_company.name)}
+        }
+      end
 
       gon.current_user = current_user.public_fields rescue nil
       gon.current_company = current_company.marshal_dump
