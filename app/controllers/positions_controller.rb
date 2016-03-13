@@ -20,6 +20,10 @@ class PositionsController < ApplicationController
   def create
     respond_to do |format|
       format.json {
+        if current_user.last_created_at && (Time.now - current_user.last_created_at.to_time)/1.minute < 1
+          return render json: {msg: "Нельзя создавать позиции чаще 1 раза в минуту. Осталось #{60 - ((Time.now - current_user.last_created_at.to_time)/1.second).to_i} секунд"}, status: 422
+        end
+
         @position = Position.new(position_params)
         if @position.save
           current_user.update(user_params.merge({
@@ -52,7 +56,9 @@ class PositionsController < ApplicationController
     respond_to do |format|
       format.html
       format.json {
-        render json: Position.new
+        @position = Position.new
+        @position.email = nil
+        render json: @position
       }
     end
   end
@@ -138,8 +144,6 @@ class PositionsController < ApplicationController
     def check_user
       if !current_user
         render json: {msg: "Вы не авторизованы", reload: true}, status: 422
-      elsif current_user.last_created_at && (Time.now - current_user.last_created_at.to_time)/1.minute < 1
-        render json: {msg: "Нельзя создавать позиции чаще 1 раза в минуту. Осталось #{60 - ((Time.now - current_user.last_created_at.to_time)/1.second).to_i} секунд"}, status: 422
       end
     end
 end
