@@ -45,7 +45,11 @@ app.controller('PositionsCtrl', ['$scope', 'action', 'Map', 'Position', function
   })
 
   action('edit', function (params) {
-    ctrl.position = Position.edit({id: params.id})
+    Position.edit({id: params.id}, function (res) {
+      res.email = atob(atob(res.email));
+      ctrl.position = res;
+    })
+
     ctrl.save = function (params) {
       Position.update(params, function (res) {
         Map.updateMarker(res.position);
