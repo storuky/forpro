@@ -343,7 +343,7 @@
 }
 .images__list {
   height: 165px;
-  overflow-x: scroll;
+  overflow-x: auto;
   white-space: nowrap;
   overflow-y: hidden;
 }
