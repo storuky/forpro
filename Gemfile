@@ -25,8 +25,8 @@ group :development, :test do
   gem 'quiet_assets'
   gem 'rename'
   gem 'bullet'
-  gem "awesome_print"
 end
+gem "awesome_print"
 
 gem 'thin'
 gem 'active_model_serializers', '>= 0.9.2'
