@@ -21,11 +21,12 @@ html ng-app="forpro"
       .search__action
         = I18n.t("position.search")
       .search__footer.ng-cloak
-        /.search__tags.clearfix
-          a.btn.btn-primary.search__add-tag.btn-plus ng-click="Search.additional = !Search.additional"
-            .btn-addon +
-            | Добавить
-        /.search__additional.ng-hide ng-show="Search.additional && Search.focused"
+        .search__tags.clearfix ng-show="Search.tags.length"
+          .tag ng-repeat="tag in Search.tags" ng-click="Search.setTag(tag)"
+            | {{tag.trade_type_title}} «{{tag.product_title}}»
+            .tag__remove ng-click="Search.removeTag(tag); $event.stopPropagation()"
+              | &times;
+        .search__additional.ng-hide ng-show="Search.focused"
           = render "search/form"
         .search__counts
           span ng-show="Search.result !== undefined"

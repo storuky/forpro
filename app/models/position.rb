@@ -1,6 +1,7 @@
 class Position < ActiveRecord::Base
   include Companiable
   include FixSphinx
+  include AASM
 
   def self.dimensions_ids
     WeightDimension.pluck(:id) rescue []
@@ -60,6 +61,20 @@ class Position < ActiveRecord::Base
 
   belongs_to :user
 
+  aasm :column => :status do
+    state :new, :initial => true
+    state :moderated
+    state :blocked
+
+    event :moderate do
+      transitions :to => :moderated, :from => [:new]
+    end
+
+    event :block do
+      transitions :to => :blocked, :from => [:new]
+    end
+  end
+
   def self.pluck_fields
     self.pluck(:id, :product_id, :trade_type, :weight, :weight_dimension_id, :price, :price_weight_dimension_id, :currency_id, :min_weight, :min_weight_dimension_id, :color, :lat, :lng)
   end
@@ -86,7 +101,7 @@ class Position < ActiveRecord::Base
     end
   end
 
-  def filter filters = []
+  def self.filter filters = []
     currencies = Currency.all_from_cache
     sql = []
 
@@ -95,25 +110,24 @@ class Position < ActiveRecord::Base
         user_currency = Currency.all_by_index_from_cache(serializer: CurrencySerializer)[filter[:currency_id].to_i]
         wd_cache = WeightDimension.all_by_index_from_cache(serializer: WeightDimensionSerializer)
 
-        trade_type_id = filter["trade_type_id"] if filter["trade_type_id"]
-        if trade_type_id
-          trade_type_query = "AND \"position_bases\".\"trade_type_id\" = #{trade_type_id}"
+        trade_type = filter["trade_type"] if filter["trade_type"]
+        if trade_type
+          trade_type_query = "AND \"positions\".\"trade_type\" = '#{trade_type}'"
         end
-
         product_id = filter["product_id"] if filter["product_id"]
-        weight_from = (filter["weight_from"] || 0).to_f * wd_cache[filter["weight_from_dimension_id"].to_i][:convert] rescue 0
-        weight_to = (filter["weight_to"] || 9999999999.0).to_f * wd_cache[filter["weight_to_dimension_id"].to_i][:convert] rescue 9999999999.0
+        weight_from = (filter["weight_from"] || 0).to_f * wd_cache[filter["weight_dimension_id"].to_i][:convert] rescue 0
+        weight_to = (filter["weight_to"] || 9999999999.0).to_f * wd_cache[filter["weight_dimension_id"].to_i][:convert] rescue 9999999999.0
 
         price_sql = "1=1"
         if filter["price_from"] or filter["price_to"]
-          price_from = (filter["price_from"] || 0).to_f / wd_cache[filter["price_from_weight_dimension_id"].to_i][:convert] rescue 0
-          price_to = (filter["price_to"] || 9999999999.0).to_f / wd_cache[filter["price_to_weight_dimension_id"].to_i][:convert] rescue 9999999999.0
+          price_from = (filter["price_from"] || 0).to_f / wd_cache[filter["weight_dimension_id"].to_i][:convert] rescue 0
+          price_to = (filter["price_to"] || 9999999999.0).to_f / wd_cache[filter["weight_dimension_id"].to_i][:convert] rescue 9999999999.0
 
           price_sql = []
           currencies.each do |currency|
             converted_price_from = price_from / currency.get_rate(user_currency[:name])
             converted_price_to = price_to / currency.get_rate(user_currency[:name])
-            price_sql << "(\"position_bases\".\"currency_id\" = #{currency.id} AND (\"position_bases\".\"price_etalon\" BETWEEN #{converted_price_from} AND #{converted_price_to}))"
+            price_sql << "(\"positions\".\"currency_id\" = #{currency.id} AND (\"positions\".\"price_etalon\" BETWEEN #{converted_price_from} AND #{converted_price_to}))"
           end
           price_sql = price_sql.join(" OR ")
         end
@@ -125,7 +139,7 @@ class Position < ActiveRecord::Base
           
           radius_of_earth = 6378137
           
-          radius = filter["radius"].present? ? filter["default_radius"].to_f + (filter["radius"].to_f * 1000) : filter["default_radius"].to_f
+          radius = filter["radius"].present? ? filter["default_radius"].to_f + (filter["radius"].to_f * 1000) : 20000
 
           a = "SIN((positions.lat-#{lat})*PI()/360)  *  SIN((positions.lat-#{lat})*PI()/360)  +  COS(#{lat}*PI()/180) * COS(positions.lat*PI()/180) * SIN((positions.lng-#{lng})*PI()/360) * SIN((positions.lng-#{lng})*PI()/360)"
           in_radius_sql = %{
@@ -133,7 +147,7 @@ class Position < ActiveRecord::Base
           }
         end
 
-        sql << "(\"position_bases\".\"status\" = 'opened') AND (#{in_radius_sql}) AND (#{price_sql}) AND (\"position_bases\".\"product_id\" = #{product_id} #{trade_type_query} AND (\"position_bases\".\"weight_etalon\" BETWEEN #{weight_from} AND #{weight_to}))"
+        sql << "(\"positions\".\"status\" <> 'blocked') AND (#{in_radius_sql}) AND (#{price_sql}) AND (\"positions\".\"product_id\" = #{product_id} #{trade_type_query} AND (\"positions\".\"weight_etalon\" BETWEEN #{weight_from} AND #{weight_to}))"
 
       end
 

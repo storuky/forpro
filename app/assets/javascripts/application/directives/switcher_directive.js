@@ -25,12 +25,17 @@ app.directive('switcher', [function(){
       })
 
       $scope.$watch('ngModel', function (ngModel) {
+        switcher_items.removeClass('active');
+
         if (ngModel) {
-          switcher_items.removeClass('active');
           var el = angular.element(iElm[0].querySelectorAll('.switcher__item[value="'+ngModel+'"]'))
-          el.addClass('active');
           $scope.ngModelTitle = el.text().trim();
+          el.addClass('active');
+        } else {
+          $scope.ngModel = switcher_items[0].getAttribute('value');
         }
+
+
       })
     }
   };

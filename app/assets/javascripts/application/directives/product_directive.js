@@ -35,6 +35,7 @@ app.directive('products', [function(){
     // compile: function(tElement, tAttrs, function transclude(function(scope, cloneLinkingFn){ return function linking(scope, elm, attrs){}})),
     link: function($scope, iElm, iAttrs, controller) {
       $scope.gon = gon;
+      var placeholder = iElm[0].querySelector('.select__selected span').innerText;
 
       $scope.focus = function () {
         iElm[0].querySelector('input').focus();
@@ -49,6 +50,8 @@ app.directive('products', [function(){
         if (ngModel) {
           $scope.ngModelTitle = _.findWhere(gon.data.products, {id: ngModel}).title;
           iElm[0].querySelector('.select__selected span').innerText = $scope.ngModelTitle;
+        } else {
+          iElm[0].querySelector('.select__selected span').innerText = placeholder;
         }
       })
     }

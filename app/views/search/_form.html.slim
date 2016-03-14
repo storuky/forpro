@@ -1,6 +1,6 @@
 .search__additional-wrapper
   .row
-    .col-2
+    .col-50 style="width: 170px"
       label.label Тип позиции
 
       .switcher ng-model="Search.params.trade_type" ng-model-title="Search.params.trade_type_title"
@@ -8,27 +8,42 @@
           = I18n.t("trade_type.buy")
         .switcher__item value="sell"
           = I18n.t("trade_type.sell")
-    .col-2
-      label.label Продукт
+    .col-50 style="width: 230px"
+      label.label Категория
       .select.form-control products="" ng-model-title="Search.params.product_title" ng-model="Search.params.product_id" name="position[product_id]"
         .select__selected
           span
             = I18n.t("position.select_product")
           .caret
-  .row
-    .col-2
-      label.label Вес от:
+  .row.row-with-separator
+    .col-50 style="width: 280px"
+      label.label Адрес
+      .form-group
+        input.form-control type="text" suggest="" coords="Search.params.coords" ng-model="Search.params.address" rebuild="Search.params"
+    .separator
+      | ±
+    .col-50 style="width: 100px"
+      label.label Радиус
+      .form-group
+        input.form-control.with-dimension type="number" min="1" ng-model="Search.params.radius"
+        dimension disabled="true" collection="[{id: 1, title: 'км'}]"
+  .row.row-with-separator
+    .col-50
+      label.label Вес (объем)
       .form-group
         input.form-control type="text" ng-model="Search.params.weight_from"
         dimension collection="gon.data.weight_dimensions" ng-model="Search.params.weight_dimension_id" ng-model-title="Search.params.weight_dimension_title"
-    .col-2
-      label.label Вес до:
+    .separator
+      | –
+    .col-50
+      label.label
+        | &nbsp;
       .form-group
         input.form-control type="text" ng-model="Search.params.weight_to"
         dimension collection="gon.data.weight_dimensions" ng-model="Search.params.weight_dimension_id" ng-model-title="Search.params.weight_dimension_title"
-  .row
-    .col-2
-      label.label Цена от:
+  .row.row-with-separator
+    .col-50
+      label.label Цена
       .form-group
         input.form-control type="text" ng-model="Search.params.price_from"
         .dimensions
@@ -36,8 +51,11 @@
           .dimension-separator
             | /
           dimension collection="gon.data.weight_dimensions" ng-model="Search.params.price_weight_dimension_id" ng-model-title="Search.params.price_weight_dimension_title"
-    .col-2
-      label.label Цена до:
+    .separator
+      | –
+    .col-50
+      label.label
+        | &nbsp;
       .form-group
         input.form-control type="text" ng-model="Search.params.price_to"
         .dimensions
@@ -46,4 +64,8 @@
             | /
           dimension collection="gon.data.weight_dimensions" ng-model="Search.params.price_weight_dimension_id" ng-model-title="Search.params.price_weight_dimension_title"
 .search__additional-footer
-  a.btn.btn-primary Найти
+  a.btn.btn-primary ng-click="Search.addTag(Search.params)"
+    span ng-hide="Search.params.id"
+      = I18n.t("position.search_add")
+    span ng-show="Search.params.id"
+      = I18n.t("position.search_update")

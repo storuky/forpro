@@ -15,17 +15,17 @@ a.icon-close.page__close ui-sref="root_path"
 
       .contact-info
         .row
-          .col-2
+          .col-50
             label.label.require = Position.human_attribute_name("name")
             = f.text_field :name
-          .col-2
+          .col-50
             label.label.require = Position.human_attribute_name("email")
             = f.text_field :email
         .row
-          .col-2
+          .col-50
             label.label.require = Position.human_attribute_name("phone")
             = f.text_field :phone
-          .col-2
+          .col-50
             label.label = Position.human_attribute_name("website")
             = f.text_field :website
   div
@@ -33,16 +33,16 @@ a.icon-close.page__close ui-sref="root_path"
 
   .page-layout
     .row
-      .col-2
+      .col-50
         .row
-          .col-2 style="width: 170px"
+          .col-50 style="width: 170px"
             label.label.require = Position.human_attribute_name("type")
             .switcher ng-model="ctrl.position.trade_type" ng-model-title="ctrl.position.trade_type_title"
               .switcher__item.active value="buy"
                 = I18n.t("trade_type.buy")
               .switcher__item value="sell"
                 = I18n.t("trade_type.sell")
-          .col-2 style="width: 235px"
+          .col-50 style="width: 235px"
             label.label.require = Position.human_attribute_name("product")
             .select.form-control products="" ng-model-title="ctrl.position.product_title" ng-model="ctrl.position.product_id" name="position[product_id]"
               .select__selected
@@ -54,18 +54,18 @@ a.icon-close.page__close ui-sref="root_path"
           label.label.require = Position.human_attribute_name("title")
           = f.text_field :title
         .row
-          .col-2
+          .col-50
             label.label.require = Position.human_attribute_name("weight")
             .form-group
               = f.text_field :weight
               dimension collection="gon.data.weight_dimensions" ng-model="ctrl.position.weight_dimension_id" ng-model-title="ctrl.position.weight_dimension_title"
-          .col-2
+          .col-50
             label.label = Position.human_attribute_name("min_weight")
             .form-group
               = f.text_field :min_weight
               dimension collection="gon.data.weight_dimensions" ng-model="ctrl.position.min_weight_dimension_id" ng-model-title="ctrl.position.min_weight_dimension_title"
         .row
-          .col-2
+          .col-50
             label.label.require = Position.human_attribute_name("price")
             .form-group
               = f.text_field :price
@@ -74,12 +74,12 @@ a.icon-close.page__close ui-sref="root_path"
                 .dimension-separator
                   | /
                 dimension collection="gon.data.weight_dimensions" ng-model="ctrl.position.price_weight_dimension_id" ng-model-title="ctrl.position.price_weight_dimension_title"
-          .col-2
+          .col-50
             label.label = Position.human_attribute_name("deviation")
             .form-group
               = f.text_field :deviation
               dimension disabled="true" collection="[{id: 1, title: '%'}]"
-      .col-2
+      .col-50
         .row
           label.label.require.block
             = Position.human_attribute_name("location")
@@ -129,11 +129,11 @@ a.icon-close.page__close ui-sref="root_path"
     .row
       no-captcha ng-if="!gon.current_user" g-recaptcha-response="ctrl.position.recaptcha" theme="light"
   .page-footer
-    .col-2
+    .col-50
       .page-footer__text
         = Position.human_attribute_name("expire_date")
         | &nbsp;
         strong ng-bind="ctrl.position.updated_at | expireDate"
-    .col-2.align-right
+    .col-50.align-right
       button.btn.btn-primary
         = I18n.t("position.#{@position ? 'update' : 'create'}")
