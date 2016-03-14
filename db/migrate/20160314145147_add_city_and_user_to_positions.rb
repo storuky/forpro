@@ -4,7 +4,7 @@ class AddCityAndUserToPositions < ActiveRecord::Migration
     add_column :positions, :user_id, :integer
   end
 
-  def up
+  def self.up
     User.find_each {|user| user.update(position_ids: user[:position_ids]) rescue ap "Пользователь не найден #{user.email}"}
   end
 end
