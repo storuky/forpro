@@ -341,6 +341,12 @@
   float: left;
   cursor: pointer;
 }
+.images__list {
+  height: 165px;
+  overflow-x: scroll;
+  white-space: nowrap;
+  overflow-y: hidden;
+}
 .images__list a {
   display: inline-block;
   text-decoration: none !important;

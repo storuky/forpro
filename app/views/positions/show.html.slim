@@ -70,7 +70,7 @@
                     .list-title
                       | #{Position.human_attribute_name("website")}:
                     .list-description
-                      a.link href="#{@position.website}" = @position.website
+                      a.link target="_blank" href="#{@position.website}" = @position.website
 
         .position-page__about
           h3.page_subtitle = Position.human_attribute_name("description")
