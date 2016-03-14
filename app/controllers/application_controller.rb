@@ -89,7 +89,7 @@ class ApplicationController < ActionController::Base
             current_user.update(locale: params[:lang])
           end
         else
-          session.locale = params[:lang]
+          session[:locale] = params[:lang]
         end
       else
         if current_user
