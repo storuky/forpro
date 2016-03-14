@@ -351,12 +351,12 @@
 }
 
 .position-page__left {
-  width: 250px;
+  min-width: 250px;
   float: left;
 }
 
 .position-page__right {
-  margin-left: 290px;
+  margin-left: 300px;
 }
 
 .position-page__params {

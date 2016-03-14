@@ -67,3 +67,36 @@ gem "validate_url"
 gem "rest-client"
 
 gem "dynamic_sitemaps"
+
+group :test, :development do
+  gem 'dotenv-rails'
+  gem 'erb2haml'
+
+  gem "webmock",                           require: false
+  gem "vcr",                               require: false
+  gem 'timecop'
+
+  gem 'rspec-rails'
+  gem 'rspec-retry', '~> 0.4.5'
+
+  #gem 'cucumber-rails',                    require: false
+  gem 'capybara'#,                          require: false
+  gem 'capybara-webkit'#,                   require: false            # default cucumber javascript capybara driver (@javascript tag in cucumber tests)
+  gem 'capybara-screenshot'
+
+  gem 'headless'
+  gem 'action_mailer_cache_delivery'
+
+  gem 'launchy'                                                         # "show me the page" step in cucumber features
+
+  gem 'database_cleaner'
+  gem 'mocha',                             require: false
+
+  gem 'selenium-webdriver'
+  gem "chromedriver-helper", "0.0.7"
+  gem 'ci_reporter'
+  gem 'ci_reporter_rspec'
+
+  gem 'rubocop',                           require: false
+  gem 'poltergeist'
+end

@@ -6,4 +6,8 @@ class WelcomeMailer < ApplicationMailer
   def woodfor email
     mail(subject: "Приглашаем к сотрудничеству", to: email)
   end
+
+  def fuelfor email
+    mail(subject: "Приглашаем к сотрудничеству", to: email)
+  end
 end
