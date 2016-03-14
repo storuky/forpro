@@ -23,7 +23,6 @@ class PositionsController < ApplicationController
         if current_user.last_created_at && (Time.now - current_user.last_created_at.to_time)/1.minute < 1
           return render json: {msg: "Нельзя создавать позиции чаще 1 раза в минуту. Осталось #{60 - ((Time.now - current_user.last_created_at.to_time)/1.second).to_i} секунд"}, status: 422
         end
-
         @position = Position.new(position_params)
         if @position.save
           current_user.update(user_params.merge({
@@ -32,6 +31,7 @@ class PositionsController < ApplicationController
           }))
           render json: {msg: "Позиция успешно создана", redirect_to: "position_path", current_user: current_user.public_fields, redirect_options: {id: @position.id}, position: @position}
         else
+          ap @position.errors
           render json: {msg: "Не все поля формы заполнены верно", errors: @position.errors}, status: 422
         end
       }

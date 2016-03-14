@@ -2,9 +2,9 @@ app.controller('AboutCtrl', ['$scope', '$state', 'User', function ($scope, $stat
   var ctrl = this;
 
   $scope.$watch('ctrl.recaptcha', function (recaptcha) {
-    console.log(recaptcha)
     if (recaptcha) {
-      User.create({recaptcha: recaptcha}, function () {
+      User.create({recaptcha: recaptcha}, function (res) {
+        gon.current_user = res.current_user;
         $state.go("root_path")
       })
     }

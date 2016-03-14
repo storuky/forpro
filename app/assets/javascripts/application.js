@@ -29,10 +29,11 @@ var app = angular.module("forpro", ["oxymoron", "ui.router", "ngTouch", "duScrol
 app.run(['$rootScope', 'Search', 'Map', '$state', '$timeout', function ($rootScope, Search, Map, $state, $timeout) {
   $rootScope.gon = gon;
   $rootScope.Routes = Routes; 
-  window.$state = $state;
-  if (!gon.current_user) {
-    $timeout(function () {
-      $state.go("about_path")
-    })
-  }
+
+  $rootScope.$on('$stateChangeStart', function(e, toState, toParams, fromState, fromParams) {
+      $timeout(function () {
+        if (toState.name != 'about_path' && toState.name != 'position_path' && !gon.current_user)
+          $state.go("about_path")
+      })
+  });
 }])

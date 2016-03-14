@@ -5,7 +5,7 @@ class UsersController < ApplicationController
         if !current_user && verify_captcha(params[:recaptcha])
           user = User.create
           session[:user_id] = user.id
-          render json: {msg: "Вы успешно вошли в систему"}
+          render json: {msg: "Вы успешно вошли в систему", current_user: user}
         else
           render json: {msg: "Подтвердите, что вы не робот."}, status: 422
         end
