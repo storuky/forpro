@@ -2,6 +2,8 @@ class User < ActiveRecord::Base
   include Companiable
   @@current_user = nil
 
+  has_many :positions
+
   class <<self
     def current_user= name
       @@current_user = name

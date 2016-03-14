@@ -58,14 +58,29 @@ class Position < ActiveRecord::Base
   before_save :set_etalon
   before_save :set_index_field
 
+  belongs_to :user
+
   def self.pluck_fields
     self.pluck(:id, :product_id, :trade_type, :weight, :weight_dimension_id, :price, :price_weight_dimension_id, :currency_id, :min_weight, :min_weight_dimension_id, :color, :lat, :lng)
   end
 
   def self.look_for query
     if query.present?
+      if query.include?("купить")
+        trade_type = "sell"
+      elsif query.include?("продать")
+        trade_type = "buy"
+      end
+
+      if trade_type
+        query.gsub!(/купить|продать/, "")
+        @positions = Position.where(trade_type: trade_type)
+      else
+        @positions = Position
+      end
+
       ids = Position.search_for_ids(query)
-      Position.where(id: ids)
+      @positions.where(id: ids)
     else
       self
     end
@@ -148,7 +163,7 @@ class Position < ActiveRecord::Base
     end
 
     def set_index_field
-      temp = [title, description]
+      temp = [title, description, city]
       [:en, :ru].each do |locale|
         temp << I18n.t("category.#{category.title}", :locale => locale)
         temp << I18n.t("product.#{product.title}", :locale => locale)
