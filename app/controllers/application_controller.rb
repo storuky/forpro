@@ -95,7 +95,7 @@ class ApplicationController < ActionController::Base
         if current_user
           I18n.locale = current_user.locale
         else
-          I18n.locale = session[:locale] || extract_locale
+          I18n.locale = session[:locale] || "ru" # extract_locale
         end
       end
     end
