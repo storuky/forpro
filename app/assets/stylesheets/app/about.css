@@ -14,9 +14,14 @@
 .about-content {
   float: right;
   text-align: right;
-  padding: 20px;
   position: relative;
   z-index: 2;
+  width: 100%;
+}
+
+.about-first-screen {
+  padding: 20px;
+  margin-bottom: 15px;
 }
 
 .about-logo {
@@ -35,17 +40,21 @@
   font-weight: lighter;
 }
 
-.about-text {
-  max-width: 620px;
+.about-description {
   font-weight: lighter;
   font-size: 16px;
   line-height: 1.5;
   margin: 15px 0;
-  float: right;
+  text-align: right;
+  padding-left: 160px;
 }
 
-.about-text strong{
+.about-description strong{
   font-weight: normal;
+}
+
+.about-start {
+  margin-top: 30px;
 }
 
 .about-start__title {
@@ -66,4 +75,95 @@
 .about-langs a {
   font-size: 14px;
   margin-left: 10px;
+}
+.about-section {
+  padding: 20px;
+  border-top: 1px solid #F0F0F0;
+  clear: both;
+}
+
+.about-section__col {
+  margin-top: 25px;
+}
+
+.about-section-title {
+  color: rgba(0, 0, 0, 0.870588);
+  margin: 10px 0;
+  text-align: center;
+  font-weight: normal;
+  font-size: 18px;
+}
+
+.about-section-description {
+  font-weight: lighter;
+  color: rgba(0, 0, 0, 0.870588);
+  font-size: 16px;
+  text-align: center;
+  opacity: .64;
+}
+
+.about-section-icon {
+  text-align: center;
+  font-size: 32px;
+  color: rgba(0, 0, 0, 0.498039);
+}
+
+.about-section-gray {
+  background: #FAFAFA;
+}
+
+.about-subtitle {
+  font-size: 32px;
+  color: #4D4D4F;
+  font-weight: lighter;
+  margin: 15px 0;
+}
+
+.about-partners {
+  margin-top: 35px;
+}
+
+.about-subdescription {
+  color: rgba(0, 0, 0, 0.870588);
+  font-size: 17px;
+  font-weight: lighter;
+  opacity: .64;
+  margin-bottom: 15px;
+}
+
+.about-footer {
+  padding-top: 30px;
+  padding: 40px 20px 10px 20px;
+  font-weight: lighter;
+  font-size: 15px;
+  margin-bottom: 0 !important;
+}
+.about-footer-logo {
+  margin-top: -20px;
+  text-align: center;
+}
+
+.about-copyright {
+  text-align: left;
+  color: rgb(51, 51, 51);
+  opacity: .64;
+}
+
+.about-questions {
+  border-bottom: 1px solid #F0F0F0;
+}
+
+.about-question__title {
+  color: rgba(0, 0, 0, 0.870588);
+  font-size: 16px;
+  margin: 15px 0;
+}
+
+.about-question__description {
+  color: rgba(48, 48, 48, 0.870588);
+  font-size: 16px;
+  font-weight: lighter;
+}
+.about-question__description strong {
+  font-weight: normal;
 }

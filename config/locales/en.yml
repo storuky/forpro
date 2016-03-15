@@ -2,7 +2,7 @@ en:
   activerecord:
     attributes:
       position:
-        type: Trade type
+        trade_type: Trade type
         product: Product
         weight: Weight (volume)
         min_weight: Min. order
@@ -21,6 +21,7 @@ en:
         location: Location
         logo: Logo / Photo
         expire_date: Expire date
+        radius: Radius
     errors:
       models:
         position:
@@ -43,6 +44,8 @@ en:
       woodfor: "For example, Buy brus"
       fuelfor: "For example, Buy petrol"
     search: Search
+    search_add: Add condition
+    search_update: Update condition
     chose_color: Сhoose the color of your position
     click_for_create: Click for create
     no_positions: No positions

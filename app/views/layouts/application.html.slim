@@ -22,7 +22,7 @@ html ng-app="forpro"
         = I18n.t("position.search")
       .search__footer.ng-cloak
         .search__tags.clearfix ng-show="Search.tags.length"
-          .tag ng-repeat="tag in Search.tags" ng-click="Search.setTag(tag)"
+          .tag ng-class="{active: Search.params.id == tag.id}" ng-repeat="tag in Search.tags" ng-click="Search.setTag(tag)"
             | {{tag.trade_type_title}} «{{tag.product_title}}»
             .tag__remove ng-click="Search.removeTag(tag); $event.stopPropagation()"
               | &times;

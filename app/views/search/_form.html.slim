@@ -1,49 +1,49 @@
 .search__additional-wrapper
   .row
-    .col-50 style="width: 170px"
-      label.label Тип позиции
+    .col-1-2 style="width: 170px"
+      label.label = Position.human_attribute_name("trade_type")
 
       .switcher ng-model="Search.params.trade_type" ng-model-title="Search.params.trade_type_title"
         .switcher__item.active value="buy"
           = I18n.t("trade_type.buy")
         .switcher__item value="sell"
           = I18n.t("trade_type.sell")
-    .col-50 style="width: 230px"
-      label.label Категория
+    .col-1-2 style="width: 230px"
+      label.label = Position.human_attribute_name("product")
       .select.form-control products="" ng-model-title="Search.params.product_title" ng-model="Search.params.product_id"
         .select__selected
           span
             = I18n.t("position.select_product")
           .caret
   .row.row-with-separator
-    .col-50 style="width: 280px"
-      label.label Адрес
+    .col-1-2 style="width: 280px"
+      label.label = Position.human_attribute_name("address")
       .form-group
         input.form-control type="text" suggest="" coords="Search.params.coords" ng-model="Search.params.address" rebuild="Search.params"
     .separator
       | ±
-    .col-50 style="width: 100px"
-      label.label Радиус
+    .col-1-2 style="width: 100px"
+      label.label = Position.human_attribute_name("radius")
       .form-group
         input.form-control.with-dimension type="number" min="1" ng-model="Search.params.radius"
         dimension disabled="true" collection="[{id: 1, title: 'км'}]"
   .row.row-with-separator
-    .col-50
-      label.label Вес (объем)
+    .col-1-2
+      label.label = Position.human_attribute_name("weight")
       .form-group
         input.form-control type="text" ng-model="Search.params.weight_from"
         dimension collection="gon.data.weight_dimensions" ng-model="Search.params.weight_dimension_id" ng-model-title="Search.params.weight_dimension_title"
     .separator
       | –
-    .col-50
+    .col-1-2
       label.label
         | &nbsp;
       .form-group
         input.form-control type="text" ng-model="Search.params.weight_to"
         dimension collection="gon.data.weight_dimensions" ng-model="Search.params.weight_dimension_id" ng-model-title="Search.params.weight_dimension_title"
   .row.row-with-separator
-    .col-50
-      label.label Цена
+    .col-1-2
+      label.label = Position.human_attribute_name("price")
       .form-group
         input.form-control type="text" ng-model="Search.params.price_from"
         .dimensions
@@ -53,7 +53,7 @@
           dimension collection="gon.data.weight_dimensions" ng-model="Search.params.price_weight_dimension_id" ng-model-title="Search.params.price_weight_dimension_title"
     .separator
       | –
-    .col-50
+    .col-1-2
       label.label
         | &nbsp;
       .form-group

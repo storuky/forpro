@@ -30,3 +30,13 @@
 .tag__remove:hover {
   background: rgba(255, 255, 255, 0.25);
 }
+
+.tag.active:before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 25px;
+  top: 0;
+  bottom: 0;
+  background: rgba(255, 255, 255, 0.17);
+}

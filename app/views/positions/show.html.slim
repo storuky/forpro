@@ -95,10 +95,10 @@
           h3.page_subtitle = Position.human_attribute_name("documents")
           div documents="ctrl.position.documents"
     .page-footer
-      .col-50
+      .col-1-2
         .page-footer__text
           = Position.human_attribute_name("expire_date")
           | &nbsp;
           strong title="Если позиция не будет поднята до этого времени." ng-bind="ctrl.position.updated_at | expireDate"
-      .col-50.align-right
+      .col-1-2.align-right
         a.btn.btn-primary ng-click="ctrl.touch(ctrl.position)" Поднять

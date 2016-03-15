@@ -2,7 +2,7 @@ ru:
   activerecord:
     attributes:
       position:
-        type: Тип позиции
+        trade_type: Тип позиции
         product: Товар
         weight: Вес (объем)
         min_weight: Мин. заказ
@@ -21,6 +21,7 @@ ru:
         location: Местоположение
         logo: Логотип / Фото
         expire_date: Дата истечения
+        radius: Радиус
     errors:
       models:
         position:

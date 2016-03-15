@@ -24,6 +24,9 @@
     -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-time:before {
+    content: "\e900";
+}
 .icon-user:before {
     content: "\e005";
 }
@@ -108,7 +111,7 @@
 .icon-phone:before {
     content: "\e600";
 }
-.icon-Menu:before {
+.icon-menu:before {
     content: "\e601";
 }
 .icon-optionsvertical:before {
@@ -135,13 +138,13 @@
 .icon-uni63:before {
     content: "\63";
 }
-.icon-uni7A:before {
+.icon-dollar:before {
     content: "\7a";
 }
-.icon-uni41:before {
+.icon-funt:before {
     content: "\41";
 }
-.icon-uni42:before {
+.icon-yena:before {
     content: "\42";
 }
 .icon-trash:before {
@@ -153,3 +156,22 @@
 .icon-marker:before {
     content: "\e19a";
 }
+.icon-update:before {
+    content: "\e1f4";
+}
+.icon-database:before {
+    content: "\e2ac";
+}
+.icon-market:before {
+    content: "\e2ba";
+}
+.icon-cogs:before {
+    content: "\e47b";
+}
+.icon-search:before {
+    content: "\e609";
+}
+.icon-earth:before {
+    content: "\e608";
+}
+
