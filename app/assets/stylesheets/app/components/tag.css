@@ -3,7 +3,6 @@
   vertical-align: middle;
   height: 28px;
   line-height: 28px;
-  background: #4FA853;
   color: white;
   margin-right: 8px;
   padding: 0 35px 0 10px;
@@ -19,7 +18,6 @@
 }
 
 .tag__remove {
-  color: white;
   position: absolute;
   top: 0;
   right: 0;

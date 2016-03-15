@@ -232,8 +232,9 @@ label.label {
   padding: 5px !important;
 }
 
-a.link {
-  color: #2787EB;
+a.link.disabled {
+  color: #4D4D4F;
+  text-decoration: none;
 }
 
 .form-group {

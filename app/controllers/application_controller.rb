@@ -117,6 +117,8 @@ class ApplicationController < ActionController::Base
       gon.translations = {
         position: I18n.t("activerecord.attributes.position")
       }
+
+      gon.locale = I18n.locale
     end
 
     def set_form_builder

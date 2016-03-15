@@ -48,7 +48,6 @@
   background: rgba(255, 219, 76, .62);
 }
 
-
 .images__arrow:hover {
   background: rgba(255, 219, 76, .9);
 }
@@ -56,4 +55,17 @@
 .position-documents__item__extension {
   color: #2b2b2b;
   background-color: #ffdb4c;
+}
+
+.tag {
+  background: #ffdb4c;
+  color: #2b2b2b;
+}
+
+.tag__remove {
+  color: #2b2b2b;
+}
+
+.link {
+  color: #f44336;
 }

@@ -55,3 +55,16 @@
 .position-documents__item__extension {
   background: #2787EB;
 }
+
+.tag {
+  background: #2787EB;
+  color: white;
+}
+
+.tag__remove {
+  color: white;
+}
+
+.link {
+  color: #2787EB;
+}

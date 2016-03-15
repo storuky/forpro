@@ -4,6 +4,9 @@
       = image_tag "about/#{current_company.name}_#{I18n.locale}_top.png"
 
     .about-content
+      .about-langs
+        a.link ng-class="{disabled: gon.locale == 'en'}" target="_self" href="/?lang=en" English
+        a.link ng-class="{disabled: gon.locale == 'ru'}" target="_self" href="/?lang=ru" Русский
       .about-logo
         = image_tag "logos/#{current_company.name}_#{I18n.locale}.png", width: 325
       h1.about-title
