@@ -1,4 +1,28 @@
 Rails.application.routes.draw do
+  namespace :admin do
+  get 'rubrics/index'
+  end
+
+  namespace :admin do
+  get 'rubrics/new'
+  end
+
+  namespace :admin do
+  get 'rubrics/edit'
+  end
+
+  namespace :admin do
+  get 'properties/index'
+  end
+
+  namespace :admin do
+  get 'properties/new'
+  end
+
+  namespace :admin do
+  get 'properties/edit'
+  end
+
   root to: "home#index"
 
   get "sitemap.xml" => "home#sitemap", format: :xml, as: :sitemap

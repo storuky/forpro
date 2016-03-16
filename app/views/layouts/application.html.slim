@@ -15,9 +15,13 @@ html ng-app="forpro"
   body ng-controller="MainCtrl as ctrl"
     a.logo
       = image_tag "logos/#{current_company.name}.svg", width: 42, height: 35
-    .search ng-class="{focused: Search.focused == true}" click-outside="Search.focused = false" click-outside-if="Search.focused"
+    .search ng-class="{focused: Search.focused == true}" click-outside="Search.focused = false; Search.showExtend = false;" click-outside-if="Search.focused"
       .search__input
         input type="text" placeholder="#{I18n.t("position.search_placeholder.#{current_company.name}")}" ng-model="Search.query" ng-model-options="{debounce: 300}" ng-focus="Search.focused = true"
+        .search__icons
+          span.search__clear.ng-hide ng-show="Search.tags.length || Search.query" ng-click="Search.reset()"
+            | &times;
+          i.icon-cogs.search__icon__settings ng-class="{actions: Search.tags.length, active: Search.showExtend}" ng-click="Search.showExtend = !Search.showExtend; Search.focused = true"
       .search__action
         = I18n.t("position.search")
       .search__footer.ng-cloak
@@ -26,7 +30,15 @@ html ng-app="forpro"
             | {{tag.trade_type_title}} «{{tag.product_title}}»
             .tag__remove ng-click="Search.removeTag(tag); $event.stopPropagation()"
               | &times;
-        .search__additional.ng-hide ng-show="Search.focused"
+        .search__create-position ng-class="{active: (Search.tags.length || Search.query) && !Search.disableCreateHint}"
+          .search__create-position__wrapper
+            .search__create-position__title Не нашли ничего подходящего?
+            .search__create-position__description
+              a.link ui-sref="new_position_path" ng-click="Search.disableCreateHint = true" Создайте позицию
+              |, это очень быстро и эффективно!
+            .search__create-position__close ng-click="Search.disableCreateHint = true"
+              | &times;
+        .search__additional.ng-hide ng-show="Search.showExtend"
           = render "search/form"
         .search__counts
           span ng-show="Search.result !== undefined"

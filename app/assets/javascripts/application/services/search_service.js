@@ -72,4 +72,9 @@ app.service('Search', ['$http', 'Position', 'Map', '$rootScope', 'ngNotify', fun
     Search.params = angular.copy(tag);
   }
 
+  Search.reset = function () {
+    Search.query = "";
+    Search.tags = [];
+  }
+
 }])
