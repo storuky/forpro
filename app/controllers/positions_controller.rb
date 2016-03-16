@@ -111,7 +111,7 @@ class PositionsController < ApplicationController
         :price, :price_weight_dimension_id, :currency_id,
         :lat, :lng, :address, :description, :color
       ).merge({
-        user_id: current_user.id,
+        user_id: (params[:position][:user_id] || current_user.id),
         logo_id: (params[:position][:logo][:id] rescue nil),
         image_ids: (params[:position][:images].map {|image| image[:id]} rescue nil),
         status: (current_user.admin? ? 'moderated' : 'new'),
