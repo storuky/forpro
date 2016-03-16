@@ -17,6 +17,7 @@
 //= require oxymoron/ng-notify
 //= require oxymoron/perfect-scrollbar
 //= require oxymoron/store
+//= require oxymoron/i18n/angular-locale_ru.js
 //= require oxymoron/underscore
 //= require oxymoron
 //= require angular-no-captcha.min
