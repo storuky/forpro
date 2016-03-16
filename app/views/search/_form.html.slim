@@ -64,6 +64,7 @@
             | /
           dimension collection="gon.data.weight_dimensions" ng-model="Search.params.price_weight_dimension_id" ng-model-title="Search.params.price_weight_dimension_title"
 .search__additional-footer
+  a.dotted.search__hide ng-click="Search.showExtend = false;" Скрыть
   a.btn.btn-primary ng-click="Search.addTag(Search.params)"
     span ng-hide="Search.params.id"
       = I18n.t("position.search_add")

@@ -139,6 +139,15 @@
   cursor: pointer;
 }
 
+.search__hide {
+  float: left;
+  margin: 6px;
+}
+
+.search__hide:hover {
+  opacity: .6;
+}
+
 .search__create-position__close:hover {
   color: #333;
 }

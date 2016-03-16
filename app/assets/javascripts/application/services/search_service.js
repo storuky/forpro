@@ -40,7 +40,6 @@ app.service('Search', ['$http', 'Position', 'Map', '$rootScope', 'ngNotify', fun
           inBounds.push(marker.options);
         }
     });
-
     Search.inView = inBounds.length;
   }
 

@@ -55,7 +55,7 @@ app.service('Map', ['$rootScope', '$filter', 'Position', function ($rootScope, $
     })
 
     map.addLayer(Map.cluster);
-    if (positions.length && options.fitBounds)
+    if (positions.length)
       map.fitBounds(Map.cluster.getBounds());
   }
 

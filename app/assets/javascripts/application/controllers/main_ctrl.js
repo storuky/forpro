@@ -8,7 +8,7 @@ app.controller('MainCtrl', ['$scope', 'Map', 'Search', 'User', function ($scope,
     User.locale({locale: locale})
   }
 
-  Search.go()
+  Search.go(null, {fitBounds: true})
 
   map.on('move', function() {
     $scope.safeApply(Search.updateInView)
