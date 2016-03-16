@@ -1,0 +1,16 @@
+.overlay
+  .page
+    h2.page__title Статистика
+    div style="padding: 20px;"
+      div
+        b
+          | Пользователей:
+          | &nbsp;&nbsp;&nbsp;
+        span
+          | {{ctrl.stats.users_count}}
+      div
+        b
+          | Позиций:
+          | &nbsp;&nbsp;&nbsp;
+        span
+          | {{ctrl.stats.new_positions_count}}/{{ctrl.stats.positions_count}}

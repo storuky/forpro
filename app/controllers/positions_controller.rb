@@ -31,7 +31,6 @@ class PositionsController < ApplicationController
           }))
           render json: {msg: "Позиция успешно создана", redirect_to: "position_path", current_user: current_user.public_fields, redirect_options: {id: @position.id}, position: @position}
         else
-          ap @position.errors
           render json: {msg: "Не все поля формы заполнены верно", errors: @position.errors}, status: 422
         end
       }
@@ -43,7 +42,7 @@ class PositionsController < ApplicationController
       format.html
       format.json {
         if @position.update(position_params)
-          current_user.update(user_params)
+          @position.user.update(user_params)
           render json: {msg: "Позиция успешно обновлена", redirect_to: "position_path", redirect_options: {id: @position.id}, position: @position}
         else
           render json: {msg: "Не все поля формы заполнены верно", errors: @position.errors}, status: 422
@@ -115,6 +114,7 @@ class PositionsController < ApplicationController
         user_id: current_user.id,
         logo_id: (params[:position][:logo][:id] rescue nil),
         image_ids: (params[:position][:images].map {|image| image[:id]} rescue nil),
+        status: (current_user.admin? ? 'moderated' : 'new'),
         document_ids: (params[:position][:documents].map {|document| document[:id]} rescue nil)
       })
     end
@@ -130,7 +130,9 @@ class PositionsController < ApplicationController
     end
 
     def check_permission
-      if current_user.position_ids.exclude?(@position.id)
+      if current_user.position_ids.include?(@position.id) || current_user.admin?
+
+      else
         respond_to do |format|
           format.html {
             redirect_to position_path(@position)

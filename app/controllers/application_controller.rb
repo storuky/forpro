@@ -114,6 +114,11 @@ class ApplicationController < ActionController::Base
 
       gon.current_user = current_user.public_fields rescue nil
       gon.current_company = current_company.marshal_dump
+      
+      if current_user.try(:admin?)
+        gon.admin = true
+      end
+
       gon.translations = {
         position: I18n.t("activerecord.attributes.position")
       }

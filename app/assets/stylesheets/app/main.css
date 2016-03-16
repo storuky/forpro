@@ -659,3 +659,14 @@
   font-size: 18px;
   text-align: center;
 }
+
+.position-images__item__trash {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background: white;
+  padding: 5px;
+  color: red;
+  z-index: 2;
+  cursor: pointer;
+}

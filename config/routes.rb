@@ -1,27 +1,4 @@
 Rails.application.routes.draw do
-  namespace :admin do
-  get 'rubrics/index'
-  end
-
-  namespace :admin do
-  get 'rubrics/new'
-  end
-
-  namespace :admin do
-  get 'rubrics/edit'
-  end
-
-  namespace :admin do
-  get 'properties/index'
-  end
-
-  namespace :admin do
-  get 'properties/new'
-  end
-
-  namespace :admin do
-  get 'properties/edit'
-  end
 
   root to: "home#index"
 
@@ -46,5 +23,17 @@ Rails.application.routes.draw do
   scope :uploads, controller: "uploads" do
     post "files"
     post "logo"
+  end
+
+  namespace :admin do
+    get "/" => 'home#index'
+    get "/stats" => 'home#stats'
+    resources :positions do
+      member do
+        put "moderate"
+      end
+    end
+    resources :users
+    resources :mailers
   end
 end

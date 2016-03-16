@@ -107,7 +107,8 @@ a.icon-close.page__close ui-sref="root_path"
           li.position-images__item ng-repeat="image in ctrl.position.images"
             a.position-images__link ng-href="{{image.body.url}}" target="_blank"
               img ng-src="{{image.body.thumb.url}}" width="150" height="150"
-
+            i class="icon-trash position-images__item__trash" ng-click="ctrl.deleteImage(image)"
+              
           li.position-images__item.position-images__add
             label for="files"
               i.icon-plus.position-images__icon

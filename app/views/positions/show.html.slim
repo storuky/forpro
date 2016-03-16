@@ -1,7 +1,7 @@
 .overlay
   .page
     a.icon-close.page__close ui-sref="root_path"
-    a.icon-pencil.page__edit.ng-hide ng-show="gon.current_user && gon.current_user.position_ids.indexOf(ctrl.position.id)!=-1" ui-sref="edit_position_path({id: ctrl.position.id})"
+    a.icon-pencil.page__edit.ng-hide ng-show="gon.current_user && gon.current_user.position_ids.indexOf(ctrl.position.id)!=-1 || gon.admin" ui-sref="edit_position_path({id: ctrl.position.id})"
     
     div
       h2.page__title = @position.title

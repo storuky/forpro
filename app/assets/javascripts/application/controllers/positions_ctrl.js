@@ -68,6 +68,12 @@ app.controller('PositionsCtrl', ['$scope', 'action', 'Map', 'Position', function
         store.set('contacts', contacts);
       }
     }, true)
+
+    ctrl.deleteImage = function (image) {
+      ctrl.position.images = _.select(ctrl.position.images, function (_image) {
+        return image.id != _image.id
+      })
+    }
   })
 
   action('show', function (params) {

@@ -1,0 +1,62 @@
+.overlay
+  .page
+    a.icon-close.page__close href="/admin"
+    h2.page__title Позиции
+    table.table.positions-table.ng-hide ng-hide="ctrl.positions.length == 0"
+      thead
+        tr
+          th.w0 = Position.human_attribute_name("expire_date")
+          th.w0 = Position.human_attribute_name("type")
+          th = Position.human_attribute_name("product")
+          th = Position.human_attribute_name("price")
+          th.w0 = Position.human_attribute_name("weight")
+          th.w0 = Position.human_attribute_name("min_weight")
+          th
+      tbody
+        tbody.ng-cloak ng-repeat="position in ctrl.positions"
+          tr
+            td.w0
+              | {{position.updated_at | date:"dd.MM.yyyy HH:mm"}}
+            td.w0
+              | {{position.trade_type_title}}
+            td
+              | {{position.product.title}}
+            td.w0
+              | {{position.price | currency}}
+              .dim
+                | {{position.currency.title}}/{{position.price_weight_dimension.title}}
+            td.w0
+              | {{position.weight}}
+              .dim
+                | {{position.weight_dimension.title}}
+            td.w0
+              | {{position.min_weight}}
+              .dim
+                | {{position.min_weight_dimension.title}}
+            td.w0.table-actions
+              a.btn-icon ng-click="ctrl.moderate(position)"
+                i.icon-check.table-icon
+              a.btn-icon ui-sref="position_path(position)" target="_blank"
+                i.icon-eye.table-icon
+              a.btn-icon.btn-danger ng-click="ctrl.destroy(position)"
+                i.icon-trash.table-icon
+          /tr
+            td colspan="7"
+              span
+                | {{position.name}}
+              | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              a.link email="position.email"
+                | {{position.email}}
+              | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              span
+                | {{position.phone}}
+              | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              span
+                | {{position.website}}
+              div ng-show="position.logo"
+                img height="60" ng-src="{{position.logo.body.thumb.url}}"
+              div style="margin-top: 10px"
+                | {{position.description}}
+
+              div ng-show="position.images.length"
+                img height="60" ng-repeat="image in position.images" ng-src="{{image.body.thumb.url}}"

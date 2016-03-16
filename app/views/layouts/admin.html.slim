@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+html ng-app="forpro"
+  head
+    title = I18n.t "company.#{current_company.name}.title"
+    meta charset="UTF-8"
+    meta content="#{t "company.#{current_company.name}.description"}" name="description"
+    = stylesheet_link_tag 'application'
+    = stylesheet_link_tag 'admin'
+    = stylesheet_link_tag current_company.name
+    = render "layouts/favicons"
+    link href='https://api.mapbox.com/mapbox.js/v2.3.0/mapbox.css' rel='stylesheet'
+    link href='https://fonts.googleapis.com/css?family=Roboto:400,300,500,700&subset=latin,cyrillic' rel='stylesheet' type='text/css'
+    link href="https://api.mapbox.com/mapbox.js/plugins/leaflet-markercluster/v0.4.0/MarkerCluster.css" rel='stylesheet' type='text/css'
+    base href="/"
+
+  body ng-controller="MainCtrl as main"
+    a.logo
+      = image_tag "logos/#{current_company.name}.svg", width: 42, height: 35
+    
+    nav.nav
+      a.nav__link href="/admin" Статистика
+      a.nav__link href="/admin/positions"
+        | Позиции
+        b ng-bind="' ('+main.stats.new_positions_count+')'"
+      / a.nav__link href="/admin/users" Пользователи
+      a.nav__link href="/admin/mailers" Рассыльщик
+
+    ui-view
+
+    script src="https://api-maps.yandex.ru/2.1/?lang=#{t "localize.map"}" type="text/javascript"
+    script src='https://api.mapbox.com/mapbox.js/v2.3.0/mapbox.js'
+    script src="https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-markercluster/v0.4.0/leaflet.markercluster.js"
+    = Gon::Base.render_data({})
+    = javascript_include_tag 'admin'
+    = javascript_include_tag "#{current_company.name}"
