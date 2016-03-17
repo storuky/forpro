@@ -5,7 +5,9 @@ app.controller('PositionsCtrl', ['$scope', 'action', 'Map', 'Position', function
   $scope.Position = Position;
 
   action('index', function () {
-    ctrl.positions = Position.query();
+    Position.query(function (res) {
+      ctrl.positions = res;
+    });
 
     ctrl.destroy = function (position) {
       if (confirm("Вы уверены?")) {

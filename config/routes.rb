@@ -8,6 +8,8 @@ Rails.application.routes.draw do
   resources :users do
     collection do
       put "locale"
+      get "confirm"
+      put "restore"
     end
   end
 

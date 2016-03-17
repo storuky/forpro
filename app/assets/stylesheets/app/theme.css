@@ -237,6 +237,10 @@ label.label {
   padding: 5px !important;
 }
 
+.link {
+  font-size: 16px;
+}
+
 a.link.disabled {
   color: #4D4D4F;
   text-decoration: none;
@@ -354,4 +358,8 @@ label.label .addon:hover {
 
 input[type="number"].with-dimension {
   padding-right: 32px;
+}
+
+button:disabled {
+  opacity: .3;
 }

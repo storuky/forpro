@@ -40,6 +40,7 @@ ru:
     select_product: Выберите товар
     new_position: "+ Создать позицию"
     my_positions: "Мои позиции"
+    restore: Восстановите доступ к своим позициям
     search_placeholder:
       agrofor: "Например, продать пшеницу"
       woodfor: "Например, продать брус"
