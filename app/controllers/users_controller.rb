@@ -24,13 +24,20 @@ class UsersController < ApplicationController
 
   def restore
     if params[:email]
-      crypt = ActiveSupport::MessageEncryptor.new(Rails.application.secrets.secret_key_base)
-      encrypted_data = crypt.encrypt_and_sign(params[:email])
+      position_count = Position.where(email: params[:email]).count
+      if position_count != 0
+        crypt = ActiveSupport::MessageEncryptor.new(Rails.application.secrets.secret_key_base)
+        encrypted_data = crypt.encrypt_and_sign(params[:email])
 
-      UserMailer.delay.restore(params[:email], "https://#{current_company.name}.pro/users/confirm?auth=#{encrypted_data}")
-      render json: {
-        msg: "Вам было отправлено письмо с данными по восстановлению доступа"
-      }
+        UserMailer.delay.restore(params[:email], "https://#{current_company.name}.pro/users/confirm?auth=#{encrypted_data}")
+        render json: {
+          msg: "Вам было отправлено письмо с данными по восстановлению доступа"
+        }
+      else
+        render json: {
+          msg: "Позиции с данным email не найдены"
+        }, status: 422
+      end
     else
       render json: {
         msg: "Неверно указан email"
