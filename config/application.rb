@@ -10,6 +10,8 @@ module Forpro
   class Application < Rails::Application
     config.middleware.use Rack::Deflater
     config.i18n.load_path += Dir[Rails.root.join('config', 'locales', '**', '*.{rb,yml}')]
+
+    config.eager_load_paths += ["#{config.root}/lib/workers"]
     
     config.assets.paths << "#{Rails.root}/app/assets/fonts"
     
