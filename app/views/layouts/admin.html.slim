@@ -14,7 +14,7 @@ html ng-app="forpro"
     base href="/"
 
   body ng-controller="MainCtrl as main"
-    a.logo
+    a.logo href="https://#{current_company.name}.pro" target="_blank"
       = image_tag "logos/#{current_company.name}.svg", width: 42, height: 35
     
     nav.nav

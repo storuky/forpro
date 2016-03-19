@@ -70,12 +70,15 @@ en:
   
   company:
     agrofor:
+      name: Agrofor
       title: "Agrofor: International Agricultural Exchange"
       description: "Buy and sell agricultural products on the international agricultural exchange «Agrofor». Discover a new, promising and dynamic market!"
     fuelfor:
+      name: Fuelfor
       title: "Fuelfor: International Fuel Exchange"
       description: "Sell them to buy oil products, fuel and grease to fuel international exchange «Fuelfor». Discover a new, promising and dynamic market!"
     woodfor:
+      name: Woodfor
       title: "Woodfor: International Lumber Exchange"
       description: "Sell them to buy lamber to lumber international exchange «Woodfor». Discover a new, promising and dynamic market!"
 

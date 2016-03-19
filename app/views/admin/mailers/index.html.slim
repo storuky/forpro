@@ -1,0 +1,19 @@
+.overlay
+  .page
+    a.icon-close.page__close href="/admin"
+    h2.page__title Отправка писем
+    
+    .page-layout
+      form
+        .row
+          label.label Email
+          input.form-control type="email" ng-model="ctrl.mail.email"
+        .row
+          label.label Тема
+          input.form-control type="text" ng-model="ctrl.mail.subject"
+        .row
+          label.label Сообщение
+          textarea.form-control rows="8" ng-model="ctrl.mail.body"
+
+    .page-footer.align-right
+      a.btn.btn-primary ng-click="ctrl.send()" Отправить

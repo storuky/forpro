@@ -1,10 +1,14 @@
+div.ng-hide content-for="Page.title"
+  = @title = "#{@position.title} | #{t("company.#{current_company.name}.name")}"
+  if @position.description.present?
+    - @description = "#{@position.description} | #{t("company.#{current_company.name}.name")}"
 .overlay
   .page
     a.icon-close.page__close ui-sref="root_path"
     a.icon-pencil.page__edit.ng-hide ng-show="gon.current_user && gon.current_user.position_ids.indexOf(ctrl.position.id)!=-1 || gon.admin" ui-sref="edit_position_path({id: ctrl.position.id})"
     
     div
-      h2.page__title = @position.title
+      h1.page__title = @position.title
 
     .page-layout
       .row

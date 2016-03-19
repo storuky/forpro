@@ -27,9 +27,10 @@
 
 var app = angular.module("forpro", ["oxymoron", "ui.router", "ngTouch", "duScroll", "noCAPTCHA"])
 
-app.run(['$rootScope', 'Search', 'Map', '$state', '$timeout', function ($rootScope, Search, Map, $state, $timeout) {
+app.run(['$rootScope', 'Search', 'Map', '$state', '$timeout', 'Page', function ($rootScope, Search, Map, $state, $timeout, Page) {
   $rootScope.gon = gon;
-  $rootScope.Routes = Routes; 
+  $rootScope.Routes = Routes;
+  $rootScope.Page = Page;
 
   $rootScope.$on('$stateChangeStart', function(e, toState, toParams, fromState, fromParams) {
       $timeout(function () {

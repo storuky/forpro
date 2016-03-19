@@ -23,6 +23,9 @@ class UsersController < ApplicationController
   end
 
   def restore
+    if current_user.last_restore_date && (DateTime.now - 1.minute < current_user.last_restore_date)
+      return render json: {msg: "Восстанавливать доступ можно не чаще 1 раза в минуту"}, status: 422
+    end
     if params[:email]
       position_count = Position.where(email: params[:email]).count
       if position_count != 0
@@ -30,6 +33,7 @@ class UsersController < ApplicationController
         encrypted_data = crypt.encrypt_and_sign(params[:email])
 
         UserMailer.delay.restore(params[:email], "https://#{current_company.name}.pro/users/confirm?auth=#{encrypted_data}")
+        current_user.update(last_restore_date: DateTime.now)
         render json: {
           msg: "Вам было отправлено письмо с данными по восстановлению доступа"
         }
