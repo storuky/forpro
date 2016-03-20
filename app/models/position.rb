@@ -81,14 +81,14 @@ class Position < ActiveRecord::Base
 
   def self.look_for query
     if query.present?
-      if query.include?("купить") || query.include?("продаю")
+      if query.include?("купить") || query.include?("продаю") || query.include?("продам")
         trade_type = "sell"
       elsif query.include?("продать") || query.include?("куплю")
         trade_type = "buy"
       end
 
       if trade_type
-        query.gsub!(/купить|продать|куплю|продаю/, "")
+        query.gsub!(/купить|продать|куплю|продаю|продам/, "")
         @positions = Position.where(trade_type: trade_type)
       else
         @positions = Position
