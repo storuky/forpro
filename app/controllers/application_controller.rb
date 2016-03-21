@@ -105,7 +105,7 @@ class ApplicationController < ActionController::Base
         {
           weight_dimensions: WeightDimension.all_from_cache(serializer: WeightDimensionSerializer),
           currencies: Currency.all_from_cache(serializer: CurrencySerializer),
-          products: Product.all_from_cache(serializer: ProductSerializer),
+          products: Product.includes(:category).all_from_cache(serializer: ProductSerializer),
           categories: Category.all_from_cache(serializer: CategorySerializer),
           trade_type: I18n.t("trade_type"),
           markers: Position.colors.map {|t| {name: t}}.select{|t| t[:name].include?(current_company.name)}

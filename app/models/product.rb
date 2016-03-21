@@ -3,4 +3,5 @@ class Product < ActiveRecord::Base
   include Cacheable
 
   has_many :positions
+  belongs_to :category
 end
