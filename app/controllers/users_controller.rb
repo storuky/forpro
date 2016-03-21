@@ -48,4 +48,16 @@ class UsersController < ApplicationController
       }, status: 422
     end
   end
+
+  def enter
+    if params[:auth]
+      crypt = ActiveSupport::MessageEncryptor.new(Rails.application.secrets.secret_key_base)
+      email = crypt.decrypt_and_verify(params[:auth])
+      user = User.where(email: email).last
+      if user
+        session[:user_id] = user.id
+      end
+      redirect_to root_path
+    end
+  end
 end

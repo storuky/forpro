@@ -9,6 +9,7 @@ Rails.application.routes.draw do
 
   resources :users do
     collection do
+      get "enter"
       put "locale"
       get "confirm"
       put "restore"
