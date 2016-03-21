@@ -1,16 +1,16 @@
 .overlay
   .page
     h2.page__title = I18n.t("position.restore")
-    
+    a.icon-close.page__close ui-sref="root_path"
     .page-layout.align-center
       div ng-show="!ctrl.result"
-        p style="font-weight: 300" На данной странице Вы сможете восстановить доступ к позициям, которые были созданы с другого компьютера/браузера.
+        p style="font-weight: 300" = I18n.t("position.restore_description")
         div style="width: 350px; margin: auto;"
-          label.label.require Укажите email к которому привязаны позиции
+          label.label.require = I18n.t("position.restore_email")
           input.form-control type="email" ng-model="ctrl.email"
       .ng-hide ng-show="ctrl.result"
         p style="font-weight: 300"
           | {{ctrl.result}}
-        a.link ng-href="{{ctrl.link}}" target="_blank" Перейти в почтовый ящик
+        a.link ng-href="{{ctrl.link}}" target="_blank" = I18n.t("position.got_to_mailbox")
     .page-footer.align-right ng-show="!ctrl.result"
-      button.btn.btn-primary ng-click="ctrl.restore()" ng-disabled="ctrl.inProgress" Восстановить
+      button.btn.btn-primary ng-click="ctrl.restore()" ng-disabled="ctrl.inProgress" = I18n.t("position.restore_button")

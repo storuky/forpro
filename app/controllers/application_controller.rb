@@ -120,7 +120,8 @@ class ApplicationController < ActionController::Base
       end
 
       gon.translations = {
-        position: I18n.t("activerecord.attributes.position")
+        position: I18n.t("activerecord.attributes.position"),
+        plur: I18n.t("position.plur")
       }
 
       gon.locale = I18n.locale

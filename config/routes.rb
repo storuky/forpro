@@ -20,6 +20,9 @@ Rails.application.routes.draw do
     member do
       put "touch"
     end
+    collection do
+      get "suitable", is_array: true
+    end
   end
 
   get "search" => "search#index"

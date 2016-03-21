@@ -18,7 +18,7 @@ app.service('Map', ['$rootScope', '$filter', 'Position', function ($rootScope, $
         return L.divIcon({
           'marker-symbol': cluster.getChildCount(),
           html: "<div class='marker-label cluster marker-label--"+gon.current_company.name+"-2'>"
-                    + "<div class='marker-label__body'>"+cluster.getChildCount()+" " + $filter("plur")(cluster.getChildCount(), ["позиция", "позиции", "позиций"]) + "</div>"
+                    + "<div class='marker-label__body'>"+cluster.getChildCount()+" " + $filter("plur")(cluster.getChildCount(), gon.translations.plur) + "</div>"
                + "</div>"
         });
       }

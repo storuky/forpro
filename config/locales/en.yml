@@ -53,6 +53,11 @@ en:
     founded: "<strong>{{Search.result.length}} {{Search.result.length | plur:['position', 'positions']}}.</strong> was found in the world."
     in_viewport: "In the viewport it's <strong>{{Search.inView}} {{Search.inView | plur:['position', 'positions']}}</strong>"
     show_email: Show email
+    restore: Restore access to your positions
+    restore_description: "On this page you will be able to regain access to the positions that have been created from a different computer / browser."
+    restore_button: Restore
+    restore_email: Fill in the email to which are attached position
+    go_to_mailbox: "Go to mailbox"
     plur:
       - position
       - positions
@@ -82,7 +87,8 @@ en:
       title: "Woodfor: International Lumber Exchange"
       description: "Sell them to buy lamber to lumber international exchange «Woodfor». Discover a new, promising and dynamic market!"
 
-  
+  words:
+    or: or
   localize:
     tomorrow: Tomorrow
     date_at: at

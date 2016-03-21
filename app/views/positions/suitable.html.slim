@@ -1,0 +1,11 @@
+.overlay
+  .page
+    a.icon-close.page__close ui-sref="root_path"
+
+    table
+      - @result.each do |res|
+        tr
+          td
+            = res.first.title
+          td
+            = res.last.title

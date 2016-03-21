@@ -102,6 +102,18 @@ class PositionsController < ApplicationController
     end
   end
 
+  def suitable
+    # @result = []
+    # positions = Position.all
+    # positions.each do |position|
+    #   positions.each do |a|
+    #     if (a.product_id == position.product_id && a.trade_type != position.trade_type)
+    #       @result.push([position, a])
+    #     end
+    #   end
+    # end
+  end
+
   private
     def position_params
       params.require(:position).permit(

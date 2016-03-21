@@ -6,7 +6,7 @@
       .no-positions
         p = I18n.t("position.no_positions")
         a.btn.btn-primary href="/positions/new" = I18n.t("position.click_for_create")
-        p или
+        p = I18n.t("words.or")
         a.link href="/users/confirm" = I18n.t("position.restore")
         
     table.table.positions-table.ng-hide ng-hide="ctrl.positions.length === 0"
