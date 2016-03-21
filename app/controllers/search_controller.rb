@@ -10,7 +10,7 @@ class SearchController < ApplicationController
           @positions = @positions.filter tags
         end
 
-        render json: @positions.pluck_fields
+        render json: Oj.dump(@positions.pluck_fields)
       }
     end
   end
