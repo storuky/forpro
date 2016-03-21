@@ -6,6 +6,9 @@ class ProductSerializer < ActiveModel::Serializer
   end
 
   def category
-    I18n.t("category.#{object.category.try(:title)}")
+    category = object.category.try(:title)
+    if category
+      I18n.t("category.#{category}")
+    end
   end
 end
