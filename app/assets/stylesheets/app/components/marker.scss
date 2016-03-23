@@ -132,6 +132,45 @@
   margin-top: 5px;
 }
 
+$cluster: (
+            ("small", #FF9800, white),
+            ("medium", #EF6C00, white),
+            ("big", #FF5722, white),
+            ("extra", #F44336, white)
+          );
+
+@each $name, $background, $color in $cluster {
+  .marker-cluster--#{$name} {
+    &:after {
+      border-color: transparent $background transparent transparent;
+    }
+
+    .marker-label__head {
+      background: $background;
+      color: $color;
+    }
+
+      
+    .marker-label__head:before {
+      background: $background;
+    }
+      
+    .marker-label__body:before {
+      background: lighten($background, 8%);
+    }
+      
+    &:hover > .marker-label__body,
+    &:hover > .marker-label__body:before {
+      background: lighten($background, 12%);
+    }
+
+    .marker-label__body {
+      background: lighten($background, 8%);
+      color: $color;
+    }
+  }
+}
+
 $colors: (
           ("agrofor-1", #FAD131, #2B2B2B), ("agrofor-2", #FFC107, #2B2B2B), ("agrofor-3", #FFA726, #2B2B2B), ("agrofor-4", #FF8A65, #2b2b2b), ("agrofor-5", #8BC34A, #2b2b2b),
           ("woodfor-1", #689F38, white), ("woodfor-2", #3A983E, white), ("woodfor-3", #795548, white),

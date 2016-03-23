@@ -15,9 +15,19 @@ app.service('Map', ['$rootScope', '$filter', 'Position', function ($rootScope, $
     Map.cluster = new L.MarkerClusterGroup({
       spiderfyDistanceMultiplier: 3.5,
       iconCreateFunction: function(cluster) {
+        var clusterSize;
+        if (cluster.getChildCount() < 10) {
+          clusterSize = "small";
+        } else if (cluster.getChildCount() < 20) {
+          clusterSize = "medium";
+        } else if (cluster.getChildCount() < 100) {
+          clusterSize = "big";
+        } else {
+          clusterSize = "extra";
+        }
         return L.divIcon({
           'marker-symbol': cluster.getChildCount(),
-          html: "<div class='marker-label cluster marker-label--"+gon.current_company.name+"-2'>"
+          html: "<div class='marker-label cluster marker-cluster--"+clusterSize+"'>"
                     + "<div class='marker-label__body'>"+cluster.getChildCount()+" " + $filter("plur")(cluster.getChildCount(), gon.translations.plur) + "</div>"
                + "</div>"
         });

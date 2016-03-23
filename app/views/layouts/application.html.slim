@@ -70,6 +70,8 @@ html ng-app="forpro"
       div ng-non-bindable=""
         = yield
 
+    a.link.contact-as href="mailto:admin@#{current_company.name}.pro" Написать нам
+
     script src="https://api-maps.yandex.ru/2.1/?lang=#{t "localize.map"}" type="text/javascript"
     script src='https://api.mapbox.com/mapbox.js/v2.3.0/mapbox.js'
     script src="https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-markercluster/v0.4.0/leaflet.markercluster.js"

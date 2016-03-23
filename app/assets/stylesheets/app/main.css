@@ -241,7 +241,6 @@
 }
 
 .new-position-btn {
-  background: #4FA853;
   width: 40px;
   height: 40px;
   border-radius: 40px;
@@ -255,7 +254,7 @@
   display: inline-block;
   vertical-align: middle;
   margin-right: 10px;
-  box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.12);
+  box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.23);
 }
 
 .nav {
@@ -269,14 +268,14 @@
   font-size: 14px;
   text-decoration: none !important;
   display: inline-block;
-  margin: 16px 10px;
+  margin: 16px 7px;
   height: 35px;
-  padding: 0 10px;
+  padding: 0 13px;
   background: white;
   line-height: 35px;
   vertical-align: middle;
-  border-radius: 3px;
-  box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.12);
+  border-radius: 25px;
+  box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.23);
 }
 
 .nav__link:hover {
@@ -669,4 +668,16 @@
   color: red;
   z-index: 2;
   cursor: pointer;
+}
+
+.contact-as {
+  position: absolute;
+  bottom: 15px;
+  left: 15px;
+  z-index: 2;
+  font-size: 14px !important;
+}
+
+.mapbox-logo {
+  display: none;
 }
