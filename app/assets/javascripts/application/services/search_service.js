@@ -21,7 +21,7 @@ app.service('Search', ['$http', 'Position', 'Map', '$rootScope', 'ngNotify', fun
     return Search.query
   }, function (query) {
     if (query === "") {
-      Search.go()
+      Search.go("", {fitBounds: false})
       var contacts = store.get('contacts') || {};
       if (contacts.lat && contacts.lng)
         map.setView([contacts.lat, contacts.lng], 13);

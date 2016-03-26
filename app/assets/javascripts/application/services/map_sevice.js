@@ -65,8 +65,11 @@ app.service('Map', ['$rootScope', '$filter', 'Position', function ($rootScope, $
     })
 
     map.addLayer(Map.cluster);
-    if (positions.length)
+    console.log(options)
+    if (positions.length && options.fitBounds)
       map.fitBounds(Map.cluster.getBounds());
+    else
+      map.setView([54.76267040025495, 37.37548828125], 6);
   }
 
   Map.addMarker = function (position) {

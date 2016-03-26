@@ -2,8 +2,10 @@ L.mapbox.accessToken = 'pk.eyJ1IjoiYWdyb2ZvciIsImEiOiJjaWxmOWJoeHMwMDNldzRsejFza
 
 var contacts = store.get('contacts') || {};
 
-window.map = L.mapbox.map('map', 'mapbox.streets', {zoomControl: false})
-    .setView([contacts.lat || 55.75396, contacts.lng || 37.620393], 13);
+window.map = L.mapbox.map('map', null, {zoomControl: false})
+    .setView([contacts.lat || 54.76267040025495, contacts.lng || 37.37548828125], 6);
+
+L.mapbox.styleLayer('mapbox://styles/agrofor/cim938xcs004ubolzydnzdhmh').addTo(map);
 
 map.on('locationfound', function(e) {
   var contacts = store.get('contacts') || {};

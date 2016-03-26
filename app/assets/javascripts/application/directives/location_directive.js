@@ -23,8 +23,10 @@ app.directive('location', ['$http', 'Map', function ($http, Map) {
     link: function($scope, iElm, iAttrs, controller) {
       var initMap = $scope.$watch('position', function () {
         if ($scope.position) {
-          $scope.map = L.mapbox.map(iElm[0], 'mapbox.streets')
-                               .setView([$scope.lat || 55.75396, $scope.lng || 37.620393], 13);
+          $scope.map = L.mapbox.map(iElm[0])
+                               .setView([$scope.lat || 54.76267040025495, $scope.lng || 37.37548828125], 6);
+          
+          L.mapbox.styleLayer('mapbox://styles/agrofor/cim938xcs004ubolzydnzdhmh').addTo($scope.map);
 
           $scope.map.scrollWheelZoom.disable();
           
@@ -83,6 +85,7 @@ app.directive('location', ['$http', 'Map', function ($http, Map) {
       $scope.$watch('[lat, lng]', function () {
         if ($scope.marker) {
           $scope.marker.setLatLng([$scope.lat, $scope.lng]);
+          $scope.map.setView([$scope.lat, $scope.lng], $scope.map.getZoom())
         }
       })
 
