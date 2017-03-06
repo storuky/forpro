@@ -39,7 +39,7 @@ gem 'russian'
 
 gem 'slim'
 gem 'slim-rails'
-gem 'rmagick'
+
 gem 'devise'
 gem 'gon'
 gem 'carrierwave'
