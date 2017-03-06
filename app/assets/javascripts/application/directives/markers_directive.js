@@ -18,7 +18,7 @@ app.directive('markers', [function(){
                         + "<div class='marker-label__body'>{{position.product_title || position.product.title || '"+gon.translations.position.product+"'}}</div>"
                       + "</a>"
                       + "<div class='markers-choose__description'>"
-                        + "<div class='markers-choose__price'>Бесплатно</div>"
+                        + "<div class='markers-choose__price' ng-bind='gon.locale == \"en\" ? \"Free\" : \"Бесплатно\"'></div>"
                       + "</div>"
                   + "</div>"
       return result;
@@ -29,6 +29,7 @@ app.directive('markers', [function(){
     // compile: function(tElement, tAttrs, function transclude(function(scope, cloneLinkingFn){ return function linking(scope, elm, attrs){}})),
     link: function($scope, iElm, iAttrs, controller) {
       $scope.markers = gon.data.markers;
+      $scope.gon = gon;
       $scope.ngModel = $scope.ngModel || $scope.markers[0].name;
       $scope.$watch('ngModel', function (ngModel, old) {
         if (!ngModel && old) {

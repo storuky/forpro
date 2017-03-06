@@ -29,6 +29,8 @@ ru:
             website:
               url: неверный адрес сайта
   position:
+    nothing_found: Не нашли ничего подходящего?
+    fast_and_free: "<a class='link' ui-sref='new_position_path' ng-click='Search.disableCreateHint = true'>Создайте позицию</a>, это очень быстро и эффективно!"
     terms_of_deal: Условия сделки
     contacts: Контактная информация
     no_desctiption: Нет описания

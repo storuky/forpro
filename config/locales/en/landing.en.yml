@@ -1,6 +1,7 @@
 en:
   landing:
     shared:
+      contact_us: Contact us
       our_services: Our services
       form:
         sign_in: "Sign in"

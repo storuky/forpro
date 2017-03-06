@@ -33,10 +33,9 @@ html ng-app="forpro"
               | &times;
         .search__create-position ng-class="{active: (Search.tags.length || Search.query) && !Search.disableCreateHint}"
           .search__create-position__wrapper
-            .search__create-position__title Не нашли ничего подходящего?
+            .search__create-position__title = t("position.nothing_found")
             .search__create-position__description
-              a.link ui-sref="new_position_path" ng-click="Search.disableCreateHint = true" Создайте позицию
-              |, это очень быстро и эффективно!
+              = t("position.fast_and_free").html_safe
             .search__create-position__close ng-click="Search.disableCreateHint = true"
               | &times;
         .search__additional.ng-hide ng-show="Search.showExtend"
@@ -70,7 +69,7 @@ html ng-app="forpro"
       div ng-non-bindable=""
         = yield
 
-    a.link.contact-as href="mailto:admin@#{current_company.name}.pro" Написать нам
+    a.link.contact-as href="mailto:admin@#{current_company.name}.pro" = t "landing.shared.contact_us"
 
     script src="https://api-maps.yandex.ru/2.1/?lang=#{t "localize.map"}" type="text/javascript"
     script src='https://api.mapbox.com/mapbox.js/v2.3.0/mapbox.js'

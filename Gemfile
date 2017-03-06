@@ -59,6 +59,7 @@ gem 'oj_mimic_json'
 gem 'whenever', :require => false
 
 gem 'sidekiq'
+gem 'seed_dump'
 gem 'devise-async'
 gem 'sinatra', :require => nil
 gem 'premailer-rails'
