@@ -29,6 +29,7 @@ en:
             website:
               url: incorrect website format
   position:
+    up: Up
     nothing_found: Nothing found?
     fast_and_free: "<a class='link' ui-sref='new_position_path' ng-click='Search.disableCreateHint = true'>Create position</a>, it is fast and free!"
     terms_of_deal: Terms of a deal
